@@ -2,9 +2,11 @@ package grocery_list_app.services;
 
 import grocery_list_app.model.GroceryList;
 import grocery_list_app.model.products.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GroceryListServices {
 
     private GroceryList userGroceryList;

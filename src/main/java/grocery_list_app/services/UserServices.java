@@ -1,7 +1,9 @@
 package grocery_list_app.services;
 
 import grocery_list_app.model.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServices {
 
     // Adiciona um novo user

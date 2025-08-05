@@ -17,6 +17,8 @@ public class Product {
     private Integer id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private ProductType type;
 
     @Lob
