@@ -1,6 +1,6 @@
 package grocery_list_app.model.products;
 
-public enum ProductsType {
+public enum ProductType {
 
     Fruits,
     Vegetables,
