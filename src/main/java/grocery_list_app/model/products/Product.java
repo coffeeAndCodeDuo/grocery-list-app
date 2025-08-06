@@ -43,4 +43,20 @@ public class Product {
     public byte[] getImage() {
         return image;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ProductServices {
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductServices(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -21,8 +21,10 @@ public class ProductServices {
     }
 
     public List<Product> getProductsByType(ProductType type) {
-    return null;
-}
-
-
+        return productRepository.findByType(type);
     }
+
+    public Product addProduct(Product product) {
+         return productRepository.save(product);
+    }
+}
