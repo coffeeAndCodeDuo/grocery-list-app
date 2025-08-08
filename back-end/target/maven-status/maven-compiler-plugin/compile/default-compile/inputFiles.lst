@@ -1,0 +1,14 @@
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/Main.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/controllers/GroceryListController.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/controllers/ProductController.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/controllers/UserController.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/GroceryList.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/User.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/products/Product.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/products/ProductType.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/repository/GroceryListRepository.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/repository/ProductRepository.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/repository/UserRepository.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/services/GroceryListServices.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/services/ProductServices.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/services/UserServices.java
