@@ -4,20 +4,24 @@ import grocery_list_app.model.GroceryList;
 import grocery_list_app.model.User;
 import grocery_list_app.model.products.Product;
 import grocery_list_app.repository.GroceryListRepository;
+import grocery_list_app.repository.ProductRepository;
 import grocery_list_app.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class GroceryListServices {
 
     private final GroceryListRepository groceryListRepository;
     private final UserRepository userRepository;
+    private final ProductRepository productRepository;
 
-    public GroceryListServices(GroceryListRepository groceryListRepository, UserRepository userRepository) {
+    public GroceryListServices(GroceryListRepository groceryListRepository, UserRepository userRepository, ProductRepository productRepository) {
         this.groceryListRepository = groceryListRepository;
         this.userRepository = userRepository;
+        this.productRepository = productRepository;
     }
 
     public GroceryList createGroceryList(String name, Integer userId) {
@@ -29,9 +33,31 @@ public class GroceryListServices {
         return groceryListRepository.save(groceryList);
     }
 
-
-    public List<Product> addToGroceryList(Product product, List<Product> myList) {
-        myList.add(product);
-        return myList;
+    public GroceryList getGroceryListByName(String name) {
+        return groceryListRepository.findByNameIgnoreCase(name);
     }
+
+    public GroceryList getGroceryListById(Integer id) {
+        return groceryListRepository.findById(id);
+    }
+
+    //adicionar exceção - IllegalStateException
+    public void addProductToGroceryList(Integer groceryListId, Integer productId) {
+        GroceryList groceryList = groceryListRepository.findById(groceryListId);
+        Product product = productRepository.findById(productId);
+
+        groceryList.getProducts().add(product);
+
+        groceryListRepository.save(groceryList);
+    }
+
+    public Set<Product> listGroceryListProducts(Integer groceryListId){
+        GroceryList groceryList = groceryListRepository.findById(groceryListId);
+        return groceryList.getProducts();
+    }
+
+    public List<GroceryList> listAllGroceryLists(){
+        return groceryListRepository.findAll();
+    }
+
 }

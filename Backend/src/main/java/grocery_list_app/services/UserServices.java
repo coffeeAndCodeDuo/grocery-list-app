@@ -21,11 +21,11 @@ public class UserServices {
     }
 
     public User getUserById(Integer id) {
-        return null;
+        return userRepository.findById(id);
     }
 
     public User getUserByEmail(String email) {
-        return null;
+        return userRepository.findByEmailIgnoreCase(email);
     }
 }
 

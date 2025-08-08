@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GroceryListRepository extends JpaRepository<GroceryList, Long> {
+
+    GroceryList findByNameIgnoreCase(String name);
+
+    GroceryList findById(Integer id);
 }

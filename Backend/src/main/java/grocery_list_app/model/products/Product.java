@@ -24,9 +24,8 @@ public class Product {
     @Lob
     private byte[] image;
 
-    @ManyToMany(mappedBy = "myGroceryList")
+    @ManyToMany(mappedBy = "products")
     private List<GroceryList> groceryList = new ArrayList<>();
-
 
     public Integer getId() {
         return id;
@@ -58,5 +57,10 @@ public class Product {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }
