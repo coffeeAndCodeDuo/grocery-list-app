@@ -2,6 +2,9 @@
 /Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/controllers/GroceryListController.java
 /Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/controllers/ProductController.java
 /Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/controllers/UserController.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/dtos/GroceryListDTO.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/dtos/ProductDTO.java
+/Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/dtos/UserDTO.java
 /Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/GroceryList.java
 /Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/User.java
 /Users/mariana/my-portfolio/grocery-list-app/back-end/src/main/java/grocery_list_app/model/products/Product.java

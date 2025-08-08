@@ -1,5 +1,6 @@
 package grocery_list_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import grocery_list_app.model.products.Product;
 import jakarta.persistence.*;
 import org.hibernate.boot.model.source.spi.SecondaryTableSource;
@@ -24,10 +25,12 @@ public class GroceryList {
             joinColumns = @JoinColumn(name = "grocerylist_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
+    @JsonIgnore
     private Set<Product> products = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
 
