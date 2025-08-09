@@ -1,6 +1,5 @@
 package grocery_list_app.controllers;
 
-import grocery_list_app.dtos.GroceryListDTO;
 import grocery_list_app.model.GroceryList;
 import grocery_list_app.services.GroceryListServices;
 import grocery_list_app.services.ProductServices;
@@ -29,9 +28,9 @@ public class GroceryListController {
 
 
     /*
-    /grocery-list/my-lists - get (todas as listas)
+    /grocery-list/my-lists - get (todas as listas) FEITO
     /grocery-list/my-lists - post (adicionar uma lista)
-    /grocery-list/my-lists/{listId} - get (lista especifica)
+    /grocery-list/my-lists/{listId} - get (lista especifica) FEITO
     /grocery-list/my-lists/{listId} - delete (apagar lista)
     /grocery-list/my-lists/{listId} - put (alterar nome da lista)
      */
@@ -43,7 +42,19 @@ public class GroceryListController {
 
     }
 
+    @GetMapping("/{groceryListId}")
+    public ResponseEntity<GroceryList> getGroceryList(@PathVariable Integer groceryListId){
+        GroceryList list = groceryListServices.getGroceryListById(groceryListId);
+        return ResponseEntity.ok(list);
+    }
 
+    /*@PostMapping({"", "/"})
+    public ResponseEntity<GroceryList> createGroceryList(@RequestBody GroceryList groceryList){
+        GroceryList create = groceryListServices.createGroceryList(groceryList.getName(),groceryList.getUser().getId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(create);
+    }
+
+     */
 
 
 

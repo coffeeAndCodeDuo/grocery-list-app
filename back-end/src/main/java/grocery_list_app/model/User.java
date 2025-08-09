@@ -24,7 +24,7 @@ public class User {
     private byte[] image;
 
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @JsonManagedReference("user-groceryList")
     private List<GroceryList> groceryList;
 
     public Integer getId() {

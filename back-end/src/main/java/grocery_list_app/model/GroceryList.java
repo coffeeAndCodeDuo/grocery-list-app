@@ -32,7 +32,7 @@ public class GroceryList {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonBackReference("user-groceryList")
     private User user;
 
     public Integer getId() {

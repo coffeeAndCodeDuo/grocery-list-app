@@ -1,6 +1,5 @@
 package grocery_list_app.services;
 
-import grocery_list_app.dtos.GroceryListDTO;
 import grocery_list_app.model.GroceryList;
 import grocery_list_app.model.User;
 import grocery_list_app.model.products.Product;
