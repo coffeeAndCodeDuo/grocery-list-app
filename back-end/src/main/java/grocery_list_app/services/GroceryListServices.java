@@ -7,6 +7,7 @@ import grocery_list_app.model.products.Product;
 import grocery_list_app.repository.GroceryListRepository;
 import grocery_list_app.repository.ProductRepository;
 import grocery_list_app.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class GroceryListServices {
     }
 
     public GroceryList createGroceryList(String name, Integer userId) {
-        User user = userRepository.findById(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));;
         GroceryList groceryList = new GroceryList();
         groceryList.setName(name);
         groceryList.setUser(user);
@@ -35,17 +37,24 @@ public class GroceryListServices {
     }
 
     public GroceryList getGroceryListByName(String name) {
-        return groceryListRepository.findByNameIgnoreCase(name);
+        return groceryListRepository.findByNameIgnoreCase(name)
+                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with name: " + name));
     }
 
     public GroceryList getGroceryListById(Integer id) {
-        return groceryListRepository.findById(id);
+        return groceryListRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + id));
+
     }
+
 
     //adicionar exceção - IllegalStateException
     public void addProductToGroceryList(Integer groceryListId, Integer productId) {
-        GroceryList groceryList = groceryListRepository.findById(groceryListId);
-        Product product = productRepository.findById(productId);
+        GroceryList groceryList = groceryListRepository.findById(groceryListId)
+                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + productId));
 
         groceryList.getProducts().add(product);
 
@@ -53,7 +62,8 @@ public class GroceryListServices {
     }
 
     public Set<Product> listGroceryListProducts(Integer groceryListId){
-        GroceryList groceryList = groceryListRepository.findById(groceryListId);
+        GroceryList groceryList = groceryListRepository.findById(groceryListId)
+                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));;
         return groceryList.getProducts();
     }
 

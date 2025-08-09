@@ -1,6 +1,8 @@
 package grocery_list_app.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import grocery_list_app.model.products.Product;
 import jakarta.persistence.*;
 import org.hibernate.boot.model.source.spi.SecondaryTableSource;
@@ -19,20 +21,19 @@ public class GroceryList {
     private Integer id;
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany (cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable (
             name = "grocerylist_products",
             joinColumns = @JoinColumn(name = "grocerylist_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    @JsonIgnore
+    @JsonManagedReference
     private Set<Product> products = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
+    @JsonBackReference
     private User user;
-
 
     public Integer getId() {
         return id;

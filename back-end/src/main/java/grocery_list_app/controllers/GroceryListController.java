@@ -38,11 +38,9 @@ public class GroceryListController {
 
     @GetMapping({"", "/"})
     public ResponseEntity<List<GroceryList>> getAllLists(){
-        try {
-            return new ResponseEntity<>(groceryListServices.listAllGroceryLists(), HttpStatus.OK);
-        } catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        List<GroceryList> lists = groceryListServices.listAllGroceryLists();
+            return ResponseEntity.ok(lists);
+
     }
 
 

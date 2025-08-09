@@ -1,5 +1,6 @@
 package grocery_list_app.model.products;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import grocery_list_app.model.GroceryList;
 import jakarta.persistence.*;
@@ -26,7 +27,7 @@ public class Product {
     private byte[] image;
 
     @ManyToMany(mappedBy = "products")
-    @JsonIgnore
+    @JsonBackReference
     private List<GroceryList> groceryList = new ArrayList<>();
 
     public Integer getId() {
