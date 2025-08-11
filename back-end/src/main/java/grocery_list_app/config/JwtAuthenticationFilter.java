@@ -1,5 +1,6 @@
 package grocery_list_app.config;
 
+import grocery_list_app.services.jwtservices.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
