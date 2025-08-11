@@ -47,8 +47,7 @@ public class Tests {
     //GroceryList Tests
     @Test
     public void createGroceryList(){
-        GroceryList groceryList = groceryListServices.createGroceryList("list1", 1);
-        GroceryList groceryList2 = groceryListServices.createGroceryList("list2", 1);
+        GroceryList groceryList = groceryListServices.createGroceryList("list1", "TIAGOCASTILHO@EMAIL.COM" );
     }
 
     @Test

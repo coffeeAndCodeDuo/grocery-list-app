@@ -49,8 +49,8 @@ public class GroceryListController {
     }
 
     /*@PostMapping({"", "/"})
-    public ResponseEntity<GroceryList> createGroceryList(@RequestBody GroceryList groceryList){
-        GroceryList create = groceryListServices.createGroceryList(groceryList.getName(),groceryList.getUser().getId());
+    public ResponseEntity<GroceryList> createGroceryList(@RequestBody GroceryList groceryList, @AuthenticationPrincipal UserDetails userDetails){
+        GroceryList create = groceryListServices.createGroceryList(groceryList.getName(), userDetails.getUserName());
         return ResponseEntity.status(HttpStatus.CREATED).body(create);
     }
 

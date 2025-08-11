@@ -25,9 +25,9 @@ public class GroceryListServices {
         this.productRepository = productRepository;
     }
 
-    public GroceryList createGroceryList(String name, Integer userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));;
+    public GroceryList createGroceryList(String name, String email) {
+        User user = userRepository.findByEmailIgnoreCase(email)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with email: " + email));;
         GroceryList groceryList = new GroceryList();
         groceryList.setName(name);
         groceryList.setUser(user);
