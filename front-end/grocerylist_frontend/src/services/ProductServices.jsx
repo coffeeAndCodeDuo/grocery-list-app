@@ -1,0 +1,1 @@
+//Nos services é onde fazemos todas as chamadas à API e manipulamos os dados. Vamos criar um ficheiro por serviço. Mesma estrutura do backend.
