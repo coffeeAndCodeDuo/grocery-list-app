@@ -1,0 +1,22 @@
+# Pasta de configuração do IntelliJ
+.idea/
+*.iml
+
+# Build outputs
+/out/
+target/
+
+# Dependências locais
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Outras configs temporárias
+*.class
