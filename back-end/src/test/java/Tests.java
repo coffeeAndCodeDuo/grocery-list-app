@@ -5,6 +5,7 @@ import grocery_list_app.model.products.ProductType;
 import grocery_list_app.services.GroceryListServices;
 import grocery_list_app.services.ProductServices;
 import grocery_list_app.services.UserServices;
+import org.glassfish.jaxb.runtime.v2.runtime.output.SAXOutput;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -47,7 +48,7 @@ public class Tests {
     //GroceryList Tests
     @Test
     public void createGroceryList(){
-        GroceryList groceryList = groceryListServices.createGroceryList("list1", "TIAGOCASTILHO@EMAIL.COM" );
+        GroceryList groceryList = groceryListServices.createGroceryList("listTest", "test@email.com" );
     }
 
     @Test
@@ -76,6 +77,11 @@ public class Tests {
     @Test
     public void listAllGroceryLists(){
         System.out.println(groceryListServices.listAllGroceryLists().toString());
+    }
+
+    @Test
+    public void testFindAllListsByUser(){
+        System.out.println(groceryListServices.listAllGroceryListsByUser("TIAGOCASTILHO@EMAIL.COM"));
     }
 
     //User Tests

@@ -7,6 +7,7 @@ import grocery_list_app.services.UserServices;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,15 +37,17 @@ public class GroceryListController {
      */
 
     @GetMapping({"", "/"})
-    public ResponseEntity<List<GroceryList>> getAllLists(){
-        List<GroceryList> lists = groceryListServices.listAllGroceryLists();
+    public ResponseEntity<List<GroceryList>> getAllLists(Authentication authentication){
+        String email = authentication.getName();
+        List<GroceryList> lists = groceryListServices.listAllGroceryListsByUser(email);
             return ResponseEntity.ok(lists);
 
     }
 
     @GetMapping("/{groceryListId}")
-    public ResponseEntity<GroceryList> getGroceryList(@PathVariable Integer groceryListId){
-        GroceryList list = groceryListServices.getGroceryListById(groceryListId);
+    public ResponseEntity<GroceryList> getGroceryList(@PathVariable Integer groceryListId, Authentication authentication){
+        String email = authentication.getName();
+        GroceryList list = groceryListServices.getGroceryListByUser(email, groceryListId);
         return ResponseEntity.ok(list);
     }
 

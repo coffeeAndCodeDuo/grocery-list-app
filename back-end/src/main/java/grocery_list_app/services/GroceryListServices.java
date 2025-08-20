@@ -16,18 +16,17 @@ import java.util.Set;
 public class GroceryListServices {
 
     private final GroceryListRepository groceryListRepository;
-    private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final UserServices userServices;
 
-    public GroceryListServices(GroceryListRepository groceryListRepository, UserRepository userRepository, ProductRepository productRepository) {
+    public GroceryListServices(GroceryListRepository groceryListRepository, ProductRepository productRepository, UserServices userServices) {
         this.groceryListRepository = groceryListRepository;
-        this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.userServices = userServices;
     }
 
     public GroceryList createGroceryList(String name, String email) {
-        User user = userRepository.findByEmailIgnoreCase(email)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with email: " + email));;
+        User user = userServices.getUserByEmail(email);
         GroceryList groceryList = new GroceryList();
         groceryList.setName(name);
         groceryList.setUser(user);
@@ -62,12 +61,23 @@ public class GroceryListServices {
 
     public Set<Product> listGroceryListProducts(Integer groceryListId){
         GroceryList groceryList = groceryListRepository.findById(groceryListId)
-                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));;
+                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));
         return groceryList.getProducts();
     }
 
     public List<GroceryList> listAllGroceryLists(){
         return groceryListRepository.findAll();
+    }
+
+    public List<GroceryList> listAllGroceryListsByUser(String email){
+        User user = userServices.getUserByEmail(email);
+        return groceryListRepository.findAllByUserId(user.getId());
+    }
+
+    public GroceryList getGroceryListByUser(String email, Integer groceryListId){
+        User user = userServices.getUserByEmail(email);
+        return groceryListRepository.findByIdAndUserId(groceryListId, user.getId())
+                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId + "and User not found with id: " + user.getId()));
     }
 
 }
