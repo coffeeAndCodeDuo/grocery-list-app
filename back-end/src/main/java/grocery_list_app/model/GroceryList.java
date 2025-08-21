@@ -1,8 +1,6 @@
 package grocery_list_app.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import grocery_list_app.model.products.Product;
 import jakarta.persistence.*;
 import org.hibernate.boot.model.source.spi.SecondaryTableSource;
@@ -14,6 +12,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "grocery_list")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
+
 public class GroceryList {
 
     @Id
@@ -27,7 +30,7 @@ public class GroceryList {
             joinColumns = @JoinColumn(name = "grocerylist_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    @JsonManagedReference
+
     private Set<Product> products = new HashSet<>();
 
     @ManyToOne

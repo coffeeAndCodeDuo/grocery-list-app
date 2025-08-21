@@ -1,7 +1,9 @@
 package grocery_list_app.model.products;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import grocery_list_app.model.GroceryList;
 import jakarta.persistence.*;
 import org.w3c.dom.stylesheets.LinkStyle;
@@ -12,6 +14,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
+
 public class Product {
 
     @Id
@@ -27,7 +34,6 @@ public class Product {
     private byte[] image;
 
     @ManyToMany(mappedBy = "products")
-    @JsonBackReference
     private List<GroceryList> groceryList = new ArrayList<>();
 
     public Integer getId() {

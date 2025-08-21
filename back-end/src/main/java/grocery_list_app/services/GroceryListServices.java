@@ -45,8 +45,6 @@ public class GroceryListServices {
 
     }
 
-
-    //adicionar exceção - IllegalStateException
     public void addProductToGroceryList(Integer groceryListId, Integer productId) {
         GroceryList groceryList = groceryListRepository.findById(groceryListId)
                 .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));
@@ -80,4 +78,16 @@ public class GroceryListServices {
                 .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId + "and User not found with id: " + user.getId()));
     }
 
+    public void deleteGroceryList(Integer groceryListId, String email) {
+        GroceryList groceryList = getGroceryListByUser(email, groceryListId);
+        groceryListRepository.delete(groceryList);
+
+    }
+
+    public GroceryList changeGroceryListName(Integer groceryListId, String newName, String email) {
+        GroceryList groceryList = getGroceryListByUser(email, groceryListId);
+        groceryList.setName(newName);
+        return groceryListRepository.save(groceryList);
+
+    }
 }

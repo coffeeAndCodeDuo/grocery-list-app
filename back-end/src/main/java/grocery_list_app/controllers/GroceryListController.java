@@ -8,6 +8,7 @@ import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFa
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +28,6 @@ public class GroceryListController {
         this.userServices = userServices;
     }
 
-
-    /*
-    /grocery-list/my-lists - get (todas as listas) FEITO
-    /grocery-list/my-lists - post (adicionar uma lista)
-    /grocery-list/my-lists/{listId} - get (lista especifica) FEITO
-    /grocery-list/my-lists/{listId} - delete (apagar lista)
-    /grocery-list/my-lists/{listId} - put (alterar nome da lista)
-     */
-
     @GetMapping({"", "/"})
     public ResponseEntity<List<GroceryList>> getAllLists(Authentication authentication){
         String email = authentication.getName();
@@ -51,14 +43,24 @@ public class GroceryListController {
         return ResponseEntity.ok(list);
     }
 
-    /*@PostMapping({"", "/"})
-    public ResponseEntity<GroceryList> createGroceryList(@RequestBody GroceryList groceryList, @AuthenticationPrincipal UserDetails userDetails){
-        GroceryList create = groceryListServices.createGroceryList(groceryList.getName(), userDetails.getUserName());
-        return ResponseEntity.status(HttpStatus.CREATED).body(create);
+    @PostMapping({"", "/"})
+    public ResponseEntity<GroceryList> createGroceryList(@RequestBody GroceryList groceryList, Authentication authentication){
+       String email = authentication.getName();
+       GroceryList newGroceryList = groceryListServices.createGroceryList(groceryList.getName(), email);
+       return ResponseEntity.ok(newGroceryList);
     }
 
-     */
+    @DeleteMapping("/{groceryListId}")
+    public ResponseEntity<?> deleteGroceryList(@PathVariable Integer groceryListId, Authentication authentication){
+        String email = authentication.getName();
+        groceryListServices.deleteGroceryList(groceryListId, email);
+        return ResponseEntity.noContent().build();
+    }
 
-
-
+    @PutMapping("/{groceryListId}")
+    public ResponseEntity<GroceryList> changeGroceryListName(@PathVariable Integer groceryListId, @RequestBody GroceryList groceryList, Authentication authentication){
+        String email = authentication.getName();
+        GroceryList updateGroceryList = groceryListServices.changeGroceryListName(groceryListId, groceryList.getName(), email);
+        return ResponseEntity.ok(updateGroceryList);
+    }
 }
