@@ -1,5 +1,6 @@
 package grocery_list_app.services;
 
+import grocery_list_app.exceptions.ProductAlreadyInListException;
 import grocery_list_app.model.GroceryList;
 import grocery_list_app.model.User;
 import grocery_list_app.model.products.Product;
@@ -45,16 +46,37 @@ public class GroceryListServices {
 
     }
 
-    public void addProductToGroceryList(Integer groceryListId, Integer productId) {
-        GroceryList groceryList = groceryListRepository.findById(groceryListId)
-                .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));
+    public GroceryList addProductToGroceryList(Integer groceryListId, String email, Integer productId) {
+       GroceryList groceryList = getGroceryListByUser(email, groceryListId);
 
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + productId));
 
-        groceryList.getProducts().add(product);
+        if(groceryList.getProducts().contains(product)){
+            throw new ProductAlreadyInListException(product.getName() + " already added to the list");
 
-        groceryListRepository.save(groceryList);
+        } else {
+            groceryList.getProducts().add(product);
+            groceryListRepository.save(groceryList);
+        }
+
+        return groceryList;
+    }
+
+    public GroceryList removeProductFromList(Integer groceryListId, String email, Integer productId){
+        GroceryList groceryList = getGroceryListByUser(email, groceryListId);
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + productId));
+
+        if(groceryList.getProducts().contains(product)){
+            groceryList.getProducts().remove(product);
+            groceryListRepository.save(groceryList);
+        } else {
+            throw  new EntityNotFoundException("Product is not in the list");
+        }
+
+        return groceryList;
     }
 
     public Set<Product> listGroceryListProducts(Integer groceryListId){

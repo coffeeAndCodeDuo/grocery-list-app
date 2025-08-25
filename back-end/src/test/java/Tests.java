@@ -64,12 +64,6 @@ public class Tests {
     }
 
     @Test
-    public void testAddProductToGroceryList(){
-       groceryListServices.addProductToGroceryList(1,20);
-       groceryListServices.addProductToGroceryList(1, 3);
-    }
-
-    @Test
     public void testListGroceryListProducts(){
         System.out.println(groceryListServices.listGroceryListProducts(1).toString());
     }

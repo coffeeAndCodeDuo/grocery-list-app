@@ -1,9 +1,11 @@
 package grocery_list_app.controllers;
 
+import grocery_list_app.exceptions.ProductAlreadyInListException;
 import grocery_list_app.model.GroceryList;
 import grocery_list_app.services.GroceryListServices;
 import grocery_list_app.services.ProductServices;
 import grocery_list_app.services.UserServices;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,6 @@ public class GroceryListController {
         String email = authentication.getName();
         List<GroceryList> lists = groceryListServices.listAllGroceryListsByUser(email);
             return ResponseEntity.ok(lists);
-
     }
 
     @GetMapping("/{groceryListId}")
@@ -63,4 +64,30 @@ public class GroceryListController {
         GroceryList updateGroceryList = groceryListServices.changeGroceryListName(groceryListId, groceryList.getName(), email);
         return ResponseEntity.ok(updateGroceryList);
     }
+
+    @PostMapping("/{groceryListId}/{productId}")
+    public ResponseEntity<?> addProducts(@PathVariable Integer groceryListId, @PathVariable Integer productId, Authentication authentication){
+        String email = authentication.getName();
+        try{
+            GroceryList groceryList = groceryListServices.addProductToGroceryList(groceryListId, email, productId);
+            return ResponseEntity.ok(groceryList);
+        } catch (ProductAlreadyInListException ex){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Product already added to the list");
+        }
+    }
+
+    @DeleteMapping("/{groceryListId}/{productId}")
+    public ResponseEntity<?> removeProducts (@PathVariable Integer groceryListId, @PathVariable Integer productId, Authentication authentication){
+        String email = authentication.getName();
+
+        try{
+            GroceryList groceryList = groceryListServices.removeProductFromList(groceryListId, email, productId);
+            return ResponseEntity.ok(groceryList);
+
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product is not in the list");
+        }
+    }
+
 }
+
