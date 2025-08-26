@@ -3,11 +3,8 @@ package grocery_list_app.model;
 import com.fasterxml.jackson.annotation.*;
 import grocery_list_app.model.products.Product;
 import jakarta.persistence.*;
-import org.hibernate.boot.model.source.spi.SecondaryTableSource;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,7 +27,6 @@ public class GroceryList {
             joinColumns = @JoinColumn(name = "grocerylist_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-
     private Set<Product> products = new HashSet<>();
 
     @ManyToOne

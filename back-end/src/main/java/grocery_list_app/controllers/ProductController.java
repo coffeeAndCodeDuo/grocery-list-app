@@ -33,5 +33,4 @@ public class ProductController {
         List<Product> productListByType = productServices.getProductsByType(productType, email);
         return ResponseEntity.ok(productListByType);
     }
-
 }

@@ -1,11 +1,12 @@
 package grocery_list_app.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,10 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+
+    @NotBlank(message = "Password is empty")
+    @Size(min = 8, message = "Password should have 8 characters")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Lob
@@ -25,6 +30,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonManagedReference("user-groceryList")
+    @JsonIgnore
     private List<GroceryList> groceryList;
 
     public Integer getId() {
@@ -82,7 +88,6 @@ public class User {
     public void setGroceryList(List<GroceryList> groceryList) {
         this.groceryList = groceryList;
     }
-
 }
 
 

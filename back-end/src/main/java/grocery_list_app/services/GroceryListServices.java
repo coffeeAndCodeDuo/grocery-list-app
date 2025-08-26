@@ -6,7 +6,6 @@ import grocery_list_app.model.User;
 import grocery_list_app.model.products.Product;
 import grocery_list_app.repository.GroceryListRepository;
 import grocery_list_app.repository.ProductRepository;
-import grocery_list_app.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 

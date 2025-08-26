@@ -1,19 +1,16 @@
 package grocery_list_app.model.products;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import grocery_list_app.model.GroceryList;
 import jakarta.persistence.*;
-import org.w3c.dom.stylesheets.LinkStyle;
 
-import java.nio.MappedByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "products")
+//para evitar loops no json
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id"

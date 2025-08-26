@@ -5,6 +5,7 @@ import grocery_list_app.repository.UserRepository;
 import grocery_list_app.services.jwtservices.CustomUserDetails;
 import grocery_list_app.services.jwtservices.JwtService;
 import grocery_list_app.services.jwtservices.JwtUserDetailsService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,11 +29,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthController(AuthenticationManager authenticationManager,
-                          JwtService jwtService,
-                          JwtUserDetailsService userDetailsService,
-                          UserRepository userRepository,
-                          PasswordEncoder passwordEncoder) {
+    public AuthController(AuthenticationManager authenticationManager, JwtService jwtService, JwtUserDetailsService userDetailsService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
@@ -64,17 +61,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody Map<String, String> request) {
-        String email = request.get("email");
-        String password = request.get("password");
-
-        if (userRepository.findByEmailIgnoreCase(email).isPresent()) {
+    public ResponseEntity<?> register(@Valid @RequestBody User newUser) {
+        if (userRepository.findByEmailIgnoreCase(newUser.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("Email already registered");
         }
 
-        User newUser = new User();
-        newUser.setEmail(email);
-        newUser.setPassword(passwordEncoder.encode(password));
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
 
         userRepository.save(newUser);
 

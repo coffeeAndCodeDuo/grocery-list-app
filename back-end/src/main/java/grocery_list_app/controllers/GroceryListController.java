@@ -6,11 +6,9 @@ import grocery_list_app.services.GroceryListServices;
 import grocery_list_app.services.ProductServices;
 import grocery_list_app.services.UserServices;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +20,7 @@ public class GroceryListController {
 
     private final GroceryListServices groceryListServices;
 
-    public GroceryListController(GroceryListServices groceryListServices, ProductServices productServices, UserServices userServices) {
+    public GroceryListController(GroceryListServices groceryListServices) {
         this.groceryListServices = groceryListServices;
     }
 
@@ -84,6 +82,5 @@ public class GroceryListController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product is not in the list");
         }
     }
-
 }
 

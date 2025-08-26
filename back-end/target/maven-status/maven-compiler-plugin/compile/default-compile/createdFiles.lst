@@ -6,3 +6,4 @@ grocery_list_app/exceptions/ProductAlreadyInListException.class
 grocery_list_app/controllers/AuthController.class
 grocery_list_app/config/JwtAuthenticationFilter.class
 grocery_list_app/config/SecurityConfig.class
+grocery_list_app/controllers/UserController.class
