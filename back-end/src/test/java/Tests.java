@@ -26,13 +26,13 @@ public class Tests {
     //Product Tests
     @Test
     public void testAllProducts(){
-        List<Product> products = productServices.getAllProducts();
+        List<Product> products = productServices.getAllProducts("tiagocastilho@email.com");
         products.forEach(product -> System.out.println(product.getName()));
     }
 
     @Test
     public void testProductByType(){
-        List<Product> products = productServices.getProductsByType(ProductType.FRUITS);
+        List<Product> products = productServices.getProductsByType(ProductType.FRUITS, "tiagocastilho@email.com");
         products.forEach(product -> System.out.println(product.getName()));
     }
 

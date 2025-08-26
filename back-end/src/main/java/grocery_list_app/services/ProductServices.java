@@ -11,16 +11,20 @@ import java.util.List;
 public class ProductServices {
 
     private final ProductRepository productRepository;
+    private final UserServices userServices;
 
-    public ProductServices(ProductRepository productRepository) {
+    public ProductServices(ProductRepository productRepository, UserServices userServices) {
         this.productRepository = productRepository;
+        this.userServices = userServices;
     }
 
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts(String email) {
+        userServices.getUserByEmail(email);
         return productRepository.findAll();
     }
 
-    public List<Product> getProductsByType(ProductType type) {
+    public List<Product> getProductsByType(ProductType type, String email) {
+        userServices.getUserByEmail(email);
         return productRepository.findByType(type);
     }
 

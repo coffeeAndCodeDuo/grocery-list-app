@@ -20,14 +20,10 @@ import java.util.List;
 @RequestMapping("/api/my-lists")
 public class GroceryListController {
 
-    private GroceryListServices groceryListServices;
-    private ProductServices productServices;
-    private UserServices userServices;
+    private final GroceryListServices groceryListServices;
 
     public GroceryListController(GroceryListServices groceryListServices, ProductServices productServices, UserServices userServices) {
         this.groceryListServices = groceryListServices;
-        this.productServices = productServices;
-        this.userServices = userServices;
     }
 
     @GetMapping({"", "/"})
