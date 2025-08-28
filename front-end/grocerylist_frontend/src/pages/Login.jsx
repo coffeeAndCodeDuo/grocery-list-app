@@ -1,5 +1,6 @@
 import Header from "../components/Header.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import UserForm from "../components/UserForm.jsx";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -7,13 +8,11 @@ export default function Login() {
   return (
     <div>
       <Header />
-      <h2>Login Page</h2>
-      <button
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        onClick={() => navigate("/home")}
-      >
-        Home
-      </button>
+
+      <UserForm type ="login"/>
+
+      <h5>Don't have an account?</h5><Link to="/register">Create your account</Link>
+
     </div>
   );
 }
