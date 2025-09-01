@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { userRegister } from "../services/AuthService";
+import { userRegister, userLogin } from "../services/AuthService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -37,7 +37,7 @@ export default function UserForm({type}){
                 setTimeout(() => navigate("/"), 3000);
         
             } else if (type === "login"){
-                response = await loginRegister(
+                response = await userLogin(
                     formData.email,
                     formData.password
                 );
@@ -47,8 +47,9 @@ export default function UserForm({type}){
 
             console.log("Backend response:", response);
 
-        } catch (error){
+        } catch (error) {
             console.log("Error:", error);
+            toast.error("Email or password incorrect");
         }
     };
 

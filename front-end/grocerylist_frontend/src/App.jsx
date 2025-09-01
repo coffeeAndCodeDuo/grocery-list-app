@@ -7,6 +7,7 @@ import GroceryList from "./pages/AllGroceryLists.jsx";
 import Profile from "./pages/UserProfile.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ToastClear from "./components/ToastClear.jsx";
 
 function App() {
   return (
@@ -21,9 +22,12 @@ function App() {
         <Route path="/grocery-list" element={<GroceryList />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
+
+      <ToastContainer position="bottom-center" autoClose={false} />
+      <ToastClear />
     </Router>
 
-    <ToastContainer position="bottom-center" autoClose={2000} />
+    
     </>
   );
 }
