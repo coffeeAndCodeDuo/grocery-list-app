@@ -8,26 +8,25 @@ import Profile from "./pages/UserProfile.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
+import Layout from "./components/Layout.jsx";
 
 function App() {
   return (
      <>
     <Router>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/grocery-list" element={<GroceryList />} />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/grocery-list" element={<GroceryList />} />
         <Route path="/profile" element={<Profile />} />
-      </Routes>
+        </Routes>
 
-      <ToastContainer position="bottom-center" autoClose={false} />
-      <ToastClear />
+        <ToastContainer position="bottom-center" autoClose={false} />
+        <ToastClear />
     </Router>
-
-    
     </>
   );
 }

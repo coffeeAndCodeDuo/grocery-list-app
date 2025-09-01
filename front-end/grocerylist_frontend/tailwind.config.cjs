@@ -5,7 +5,18 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'background-grey': '#f5f5f5',
+        'button-green': '#4caf50',
+        'link-blue': '#38b6ff'
+      },
+      fontFamily: {
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
-}
+};
+
