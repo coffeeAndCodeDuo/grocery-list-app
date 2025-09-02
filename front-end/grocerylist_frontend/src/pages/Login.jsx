@@ -1,4 +1,4 @@
-import Header from "../components/Header.jsx";
+import Header from "../components/headers/Header.jsx";
 import { useNavigate, Link } from "react-router-dom";
 import UserForm from "../components/auth/UserForm.jsx";
 

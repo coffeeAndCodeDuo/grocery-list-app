@@ -17,7 +17,10 @@ export async function userLogin(email, password) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
     });
-    const loginToken = await response.json();
+    const data = await response.json();
+    const loginToken = data.token;
+
+    localStorage.setItem("token", loginToken);
 
     return loginToken;
 }

@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../components/headers/Header";
 import UserForm from "../components/auth/UserForm";
 import {Link} from "react-router-dom";
 
