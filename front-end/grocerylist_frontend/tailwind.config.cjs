@@ -15,6 +15,10 @@ module.exports = {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
         poppins: ['Poppins', 'sans-serif'],
       },
+
+      width: {
+        '76': '310px',
+      },
     },
   },
   plugins: [],

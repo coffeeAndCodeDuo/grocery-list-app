@@ -7,10 +7,16 @@ export default function Register() {
   return (
     <div>
       <Header />
-      <h2>Create your account</h2>
-      <h5>Already have an account?</h5><Link to="/">Login</Link>
+      <div className="mx-auto w-76 mb-6">
+         <h3>Create your account</h3>
+      </div>
 
       <UserForm type="register"/>
+
+      <div className="flex gap-1 justify-center">
+          <h6>Already have an account?</h6>
+          <Link to="/" className="text-sm text-link-blue hover:underline">Login</Link>
+      </div>
 
       
     </div>

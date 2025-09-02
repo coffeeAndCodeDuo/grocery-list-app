@@ -7,11 +7,17 @@ export default function Login() {
 
   return (
     <div>
-      <Header />
+      <Header/>
+
+      <div>
 
       <UserForm type ="login"/>
 
-      <h5>Don't have an account?</h5><Link to="/register">Create your account</Link>
+        <div className="flex gap-1 justify-center">
+          <h6>Don't have an account?</h6>
+          <Link to="/register" className="text-sm text-link-blue hover:underline">Create your account</Link>
+        </div>
+      </div>
 
     </div>
   );

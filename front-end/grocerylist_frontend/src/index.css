@@ -7,13 +7,34 @@
 
 @layer base {
     body {
-        @apply bg-background-grey font-sans min-h-screen mx-10 my-16;
+        @apply bg-background-grey font-sans min-h-screen mx-6 my-16;
     }
-
 
     h1{
-        @apply text-3xl 
+        @apply text-3xl;
     }
 
+    h2{
+        @apply text-2xl;
+    }
 
+    h3{
+        @apply text-xl;
+    }
+
+    h4{
+        @apply text-lg;
+    }
+
+    h5{
+        @apply text-base;
+    }
+
+    h6{
+        @apply text-sm;
+    }
+
+    h7{
+        @apply text-xs;
+    }
 }

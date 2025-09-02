@@ -58,25 +58,55 @@ export default function UserForm({type}){
         <form onSubmit={handleSubmit}>
             {type === "register" && (
             <>
-            <label htmlFor="firstName">First Name:</label>
-            <input name="firstName" //identifca o campo
-            value={formData.firstName} //o react a verificar o estado do campo (useState)
-            onChange={handleChange} //atualiza o campo quando o user escreve alguma coisa
-            type="text" 
-            placeholder="First Name"/> 
+            <div className="flex gap-4 mx-auto w-76">
+                <div className="flex flex-col w-1/2 gap-1.5 mb-6">
+                    <label htmlFor="firstName"><h5>First Name</h5></label>
+                    <input name="firstName" //identifca o campo
+                    value={formData.firstName} //o react a verificar o estado do campo (useState)
+                    onChange={handleChange} //atualiza o campo quando o user escreve alguma coisa
+                    type="text" 
+                    placeholder="John"
+                    className="border border-black rounded-lg h-10 w-full placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"
+                    /> 
+                </div>
 
-            <label htmlFor="lastName">Last Name:</label>
-            <input name="lastName" value={formData.lastName} onChange={handleChange} type="text" placeholder="Last Name"/>
+                <div className="flex flex-col w-1/2 gap-1.5 mb-6">
+                    <label htmlFor="lastName"><h5>Last Name</h5></label>
+                    <input name="lastName" value={formData.lastName} onChange={handleChange} type="text" placeholder="Doe"
+                    className="border border-black rounded-lg h-10 w-full placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+                </div>
+            </div>
             </>
             )}
 
-            <label htmlFor="email">Email:</label>
-            <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="Email"/>
+            <div className="flex flex-col mx-auto w-76 mb-6 gap-1.5">
+                <label htmlFor="email"><h5>Email</h5></label>
+                <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="email@example.com" 
+                className="border border-black rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+            </div>
 
-            <label htmlFor="password">Password:</label>
-            <input name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Password"/>
+            <div className="flex flex-col mx-auto w-76 mb-4 gap-1.5">
+            <label htmlFor="password"><h5>Password</h5></label>
+            <input name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Enter your password"
+            className="border border-black rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+            </div>
 
-            <button>{type === "login" ? "Login" : "Register"} </button>
+            <div>
+                {type === "login" && (
+                    <p className="text-xs text-center mb-48">Forget your password?</p>
+                )}
+            </div>
+            
+            <div className="flex justify-center mb-4 gap-1.5">
+                <button 
+                    className={
+                        type === "login" 
+                        ? "bg-button-green rounded-lg px-20 py-2 text-base text-white"
+                        : "bg-button-green rounded-lg px-20 py-2 text-base text-white mt-16"
+                    }>
+                    {type === "login" ? "Login" : "Register"} 
+                </button>
+            </div>
 
         </form>
     )

@@ -5,6 +5,7 @@ import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
 import GroceryList from "./pages/AllGroceryLists.jsx";
 import Profile from "./pages/UserProfile.jsx";
+import SetPassword from "./pages/SetPassword.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
@@ -21,10 +22,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
           <Route path="/grocery-list" element={<GroceryList />} />
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/forget-password" element={<SetPassword />} />
         </Routes>
 
-        <ToastContainer position="bottom-center" autoClose={false} />
+        <ToastContainer position="top-center" autoClose={false} />
         <ToastClear />
     </Router>
     </>
