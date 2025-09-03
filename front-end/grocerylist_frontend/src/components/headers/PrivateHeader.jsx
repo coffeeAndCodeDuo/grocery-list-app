@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Header from './Header.jsx';
+import profileImg from '../../assets/profile.png';
 import { getUserProfile } from '../../services/UserService.jsx';
 
 export default function PrivateHeader() {
-    const [profile, setProfile] = useState(null);
+   /*const [profile, setProfile] = useState(null);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -12,13 +13,14 @@ export default function PrivateHeader() {
         };
         fetchProfile();
     }, []);
+    */
 
 
     return (
         <div>
             <Header />
             <div>
-                <img src={profile?.image} alt={profile?.name || "User"} />
+                <img src={profileImg} alt="User" />
             </div>
 
         </div>  

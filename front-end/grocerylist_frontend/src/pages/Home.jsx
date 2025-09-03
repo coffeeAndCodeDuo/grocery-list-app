@@ -1,8 +1,9 @@
+import PrivateHeader from "../components/headers/PrivateHeader";
 
 export default function Home() {
   return (
     <div>
-      <h1>Home</h1>
+      <PrivateHeader />
     </div>
   );
 }
