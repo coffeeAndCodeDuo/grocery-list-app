@@ -7,7 +7,7 @@
 
 @layer base {
     body {
-        @apply bg-background-grey font-sans min-h-screen mx-6 my-16;
+        @apply bg-background-grey font-sans mx-6 my-16;
     }
 
     h1{
@@ -37,4 +37,5 @@
     h7{
         @apply text-xs;
     }
+
 }

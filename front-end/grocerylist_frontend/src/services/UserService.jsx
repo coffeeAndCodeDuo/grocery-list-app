@@ -13,5 +13,8 @@ export async function getUserProfile() {
     if (!response.ok) {
         throw new Error('Failed to fetch user profile');
     }
-    return await response.json();
+    const data = await response.json();
+    console.log(data); //nao se pode por response.json() duas vezes porque a response só é lida uma vez
+    return data;
+
 }
