@@ -3,12 +3,13 @@ import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
-import GroceryList from "./pages/AllGroceryLists.jsx";
+import AllGroceryLists from "./pages/AllGroceryLists.jsx";
 import Profile from "./pages/UserProfile.jsx";
 import SetPassword from "./pages/SetPassword.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
+import ListPage from "./pages/ListPage.jsx";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/grocery-list" element={<GroceryList />} />
+          <Route path="/my-lists" element={<AllGroceryLists />} />
+          <Route path="/my-list/new" element={<ListPage />} />
+          <Route path="/my-list/:listId" element={<ListPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/forget-password" element={<SetPassword />} />
         </Routes>
@@ -32,6 +35,6 @@ function App() {
   );
 }
 
-export default App
+export default App;
 
   
