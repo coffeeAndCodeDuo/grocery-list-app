@@ -2,6 +2,7 @@ import PrivateHeader from "../components/headers/PrivateHeader";
 import MainCard from "../components/MainCard";
 import { useEffect, useState } from "react";
 import { getUserProfile } from '../services/UserService.jsx';
+import HomeLists from "../components/HomeLists.jsx";
 
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <PrivateHeader />
       <MainCard 
         topContent={<h4>Hi, {profile?.firstName} 👋 </h4>}
+        bottomContent={<HomeLists />}
       />
     </div>
   );

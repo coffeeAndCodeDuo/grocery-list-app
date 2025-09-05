@@ -9,7 +9,10 @@ module.exports = {
       colors: {
         'background-grey': '#f5f5f5',
         'button-green': '#4caf50',
-        'link-blue': '#38b6ff'
+        'link-blue': '#38b6ff',
+        'light-orange': '#ffe2b6',
+        'orange-highlight': '#ffbd59',
+        'light-yellow':'#fff8da'
       },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui'],

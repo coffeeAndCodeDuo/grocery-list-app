@@ -3,18 +3,6 @@ import profileImg from '../../assets/profile.png';
 import { getUserProfile } from '../../services/UserService.jsx';
 
 export default function PrivateHeader() {
-   /*const [profile, setProfile] = useState(null);
-
-    useEffect(() => {
-        const fetchProfile = async () => {
-            const data = await getUserProfile();
-            setProfile(data);
-        };
-        fetchProfile();
-    }, []);
-    */
-
-
     return (
         <div className="flex items-center justify-between w-80 p-4 mb-12 mt-20 mx-auto"> 
             <h1 className="w-full text-center">Grocery List</h1>

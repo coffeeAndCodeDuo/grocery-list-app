@@ -66,14 +66,14 @@ export default function UserForm({type}){
                     onChange={handleChange} //atualiza o campo quando o user escreve alguma coisa
                     type="text" 
                     placeholder="John"
-                    className="border border-black rounded-lg h-10 w-full placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"
+                    className="rounded-lg h-10 w-full placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"
                     /> 
                 </div>
 
                 <div className="flex flex-col w-1/2 gap-1.5 mb-6">
                     <label htmlFor="lastName"><h5>Last Name</h5></label>
                     <input name="lastName" value={formData.lastName} onChange={handleChange} type="text" placeholder="Doe"
-                    className="border border-black rounded-lg h-10 w-full placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+                    className="rounded-lg h-10 w-full placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
                 </div>
             </div>
             </>
@@ -82,13 +82,13 @@ export default function UserForm({type}){
             <div className="flex flex-col mx-auto w-76 mb-6 gap-1.5">
                 <label htmlFor="email"><h5>Email</h5></label>
                 <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="email@example.com" 
-                className="border border-black rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+                className="rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
             </div>
 
             <div className="flex flex-col mx-auto w-76 mb-4 gap-1.5">
             <label htmlFor="password"><h5>Password</h5></label>
             <input name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Enter your password"
-            className="border border-black rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+            className="rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
             </div>
 
             <div>

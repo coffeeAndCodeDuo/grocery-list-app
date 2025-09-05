@@ -9,7 +9,6 @@ import SetPassword from "./pages/SetPassword.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
-import Layout from "./components/Layout.jsx";
 
 function App() {
   return (
