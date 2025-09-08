@@ -1,4 +1,5 @@
-export default function GroceryList() {
+
+export default function ListPage() {
   return (
     <div>
       

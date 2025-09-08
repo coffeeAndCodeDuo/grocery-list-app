@@ -12,7 +12,8 @@ module.exports = {
         'link-blue': '#38b6ff',
         'light-orange': '#ffe2b6',
         'orange-highlight': '#ffbd59',
-        'light-yellow':'#fff8da'
+        'light-yellow':'#fff8da',
+        'light-blue': '#dbf0f8',
       },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui'],

@@ -9,7 +9,7 @@ export default function HomeLists() {
                 <AddListButton />
             </div>    
             <div className="bg-light-yellow rounded-b-lg h-48 mx-6 pt-2">
-                <ListCard/>
+                <ListCard type="home"/>
             </div>
            
         </div>

@@ -3,7 +3,7 @@ import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
-import AllGroceryLists from "./pages/AllGroceryLists.jsx";
+import AllLists from "./pages/AllLists.jsx";
 import Profile from "./pages/UserProfile.jsx";
 import SetPassword from "./pages/SetPassword.jsx";
 import { ToastContainer } from "react-toastify";
@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/my-lists" element={<AllGroceryLists />} />
+          <Route path="/my-lists" element={<AllLists />} />
           <Route path="/my-list/new" element={<ListPage />} />
           <Route path="/my-list/:listId" element={<ListPage />} />
           <Route path="/profile" element={<Profile />} />
