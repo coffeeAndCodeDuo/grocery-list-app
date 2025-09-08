@@ -1,4 +1,5 @@
 import AddListButton from "./buttons/AddListButton"
+import ListCard from "./ListCard"
 
 export default function HomeLists() {
     return (
@@ -7,8 +8,10 @@ export default function HomeLists() {
                 <h5>My Lists</h5>
                 <AddListButton />
             </div>    
-            <div className="bg-light-yellow rounded-b-lg h-32 mx-6"></div>
-
+            <div className="bg-light-yellow rounded-b-lg h-48 mx-6 pt-2">
+                <ListCard/>
+            </div>
+           
         </div>
     )
 }

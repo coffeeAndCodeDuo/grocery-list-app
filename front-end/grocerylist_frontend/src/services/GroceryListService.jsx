@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:8081/grocery-list/api/my-lists';
+import { toast } from "react-toastify";
 
 export async function getAllLists() {
 
@@ -62,4 +63,20 @@ export async function getListById(listId) {
     return data;
 }
 
-    
+export async function deleteListById(groceryListId) {
+
+    const token = localStorage.getItem("token");
+    const response = await fetch (`${BASE_URL}/${groceryListId}`, {
+        method: "DELETE", 
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete list by ID");
+    }
+
+
+    toast.success("List deleted successfully!", { autoClose: 1500})            
+}
