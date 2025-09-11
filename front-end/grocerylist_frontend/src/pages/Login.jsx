@@ -1,6 +1,6 @@
 import Header from "../components/headers/Header.jsx";
 import { useNavigate, Link } from "react-router-dom";
-import UserForm from "../components/auth/UserForm.jsx";
+import UserForm from "../components/forms/UserForm.jsx";
 
 export default function Login() {
   const navigate = useNavigate();

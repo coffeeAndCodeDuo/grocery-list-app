@@ -21,7 +21,7 @@ export async function getAllLists() {
     return data;
 }
 
-export async function createNewList(listName) {
+export async function createNewList(name) {
 
     const token = localStorage.getItem("token");
 
@@ -31,7 +31,7 @@ export async function createNewList(listName) {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({listName})
+        body: JSON.stringify({name})
     });
 
     if (!response.ok) {
@@ -79,4 +79,26 @@ export async function deleteListById(groceryListId) {
 
 
     toast.success("List deleted successfully!", { autoClose: 1500})            
+}
+
+export async function updateListName(groceryListId, name) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch (`${BASE_URL}/${groceryListId}`, {
+        method: "PUT", 
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({name})
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update list name");
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
 }

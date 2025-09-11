@@ -1,5 +1,5 @@
 import Header from "../components/headers/Header";
-import UserForm from "../components/auth/UserForm";
+import UserForm from "../components/forms/UserForm";
 import {Link} from "react-router-dom";
 
 
