@@ -5,6 +5,7 @@ import grocery_list_app.model.products.ProductType;
 import grocery_list_app.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -26,6 +27,13 @@ public class ProductServices {
     public List<Product> getProductsByType(ProductType type, String email) {
         userServices.getUserByEmail(email);
         return productRepository.findByType(type);
+    }
+
+    public List<String> getProductTypes (String email){
+        userServices.getUserByEmail(email);
+        return Arrays.stream(ProductType.values())
+                .map(ProductType::getValue)
+                .toList();
     }
 
     public Product addProduct(Product product) {

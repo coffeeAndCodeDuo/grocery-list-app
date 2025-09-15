@@ -33,4 +33,13 @@ public class ProductController {
         List<Product> productListByType = productServices.getProductsByType(productType, email);
         return ResponseEntity.ok(productListByType);
     }
+
+    @GetMapping("/types")
+    public ResponseEntity<List<String>> listTypes (Authentication authentication){
+        String email = authentication.getName();
+        List<String> productTypes = productServices.getProductTypes(email);
+        return ResponseEntity.ok(productTypes);
+    }
+
+
 }

@@ -1,13 +1,15 @@
 import PrivateHeader from "../components/headers/PrivateHeader";
 import AddListNameForm from "../components/forms/AddListNameForm";
 import UpdateListNameForm from "../components/forms/UpdateListNameForm";
-import {useParams, useState} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import MainCard from "../components/MainCard";
+import { useState, useEffect } from "react";
+import { getListById } from "../services/GroceryListService";
 
 export default function ListPage() {
   const { listId } = useParams();
   const [listName, setListName] = useState("");
-
+  
   useEffect(() => {
     async function fetchList() {
       if (listId) {
@@ -17,6 +19,7 @@ export default function ListPage() {
     }
     fetchList();
   }, [listId]);
+
 
 
   const listNameForm = () => {

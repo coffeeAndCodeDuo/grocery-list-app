@@ -3,18 +3,18 @@ package grocery_list_app.model.products;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ProductType {
-    FRUITS("fruits"),
-    VEGETABLES("vegetables"),
-    MEAT("meat"),
-    FISH("fish"),
-    CHARCUTERIE("charcuterie"),
-    BAKERY("bakery"),
-    DAIRY("dairy"), //lacticinios
-    PANTRYITEM("pantryitem"), //artigos de mercearia
-    DRINKS("drinks"),
-    ALCOHOLICDRINKS("alcoholicdrinks"),
-    HOMECLEANING("homecleaning"),
-    HEALTHBEAUTY("healthbeauty");
+    FRUITS("Fruits"),
+    VEGETABLES("Vegetables"),
+    MEAT("Meat"),
+    FISH("Fish"),
+    CHARCUTERIE("Charcuterie"),
+    BAKERY("Bakery"),
+    DAIRY("Dairy"), //lacticinios
+    PANTRYITEM("Pantry Items"), //artigos de mercearia
+    DRINKS("Drinks"),
+    ALCOHOLICDRINKS("Alcoholic Drinks"),
+    HOMECLEANING("Home Cleaning"),
+    HEALTHBEAUTY("Health & Beauty");
 
     private String value;
 

@@ -2,9 +2,12 @@ import { useState, useEffect} from "react";
 import { getAllLists} from "../services/GroceryListService";
 import { Link } from "react-router-dom";
 import { deleteListById } from "../services/GroceryListService";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ListCard({type}) {
+
+    const navigate = useNavigate();
 
     const [lists, setLists] = useState([]);
     useEffect(() => { 
@@ -29,8 +32,8 @@ export default function ListCard({type}) {
         if (lists.length <= 3 && lists.length > 0){
             const userLists = [];
             lists.forEach((list) => {
-                userLists.push(<div key={list.id} className="bg-white rounded-lg h-10 flex items-center justify-between mx-4 mt-1 p-4 font-semibold"><p>{list.name}</p>
-                    <button onClick={() => handleDelete(list.id)}><p>🗑</p></button>
+                userLists.push(<div onClick={()=> navigate("/my-list/" + list.id) }key={list.id} className="bg-white rounded-lg h-10 flex items-center justify-between mx-4 mt-1 p-4 font-semibold cursor-pointer"><p>{list.name}</p>
+                    <button onClick={(e) => {e.stopPropagation(); handleDelete(list.id)}}><p>🗑</p></button>
                 </div>)
             });
 
@@ -44,9 +47,9 @@ export default function ListCard({type}) {
         if(lists.length > 3){
             const userLists = [];
             for (let i = 0; i < 3; i++){
-                userLists.push(<div key={lists[i].id} className="bg-white rounded-lg h-10 flex items-center justify-between mx-4 mt-1 p-4 font-semibold">
+                userLists.push(<div onClick={()=> navigate("/my-list/" + lists[i].id) } key={lists[i].id} className="bg-white rounded-lg h-10 flex items-center justify-between mx-4 mt-1 p-4 font-semibold cursor-pointer">
                     <p>{lists[i].name}</p>
-                    <button onClick={() => handleDelete(lists[i].id)}><p>🗑</p></button>
+                    <button onClick={(e) => {e.stopPropagation(); handleDelete(lists[i].id)}}><p>🗑</p></button>
                 </div>)
             }
 
@@ -69,8 +72,8 @@ export default function ListCard({type}) {
         if (lists.length > 0){
             const userLists = [];
             lists.forEach((list) => {
-                userLists.push(<div key={list.id} className="bg-white rounded-lg h-10 flex items-center justify-between mx-4 mb-4 p-4 font-semibold"><p>{list.name}</p>
-                    <button onClick={() => handleDelete(list.id)}><p>🗑</p></button>
+                userLists.push(<div onClick={()=> navigate("/my-list/" + list.id) } key={list.id} className="bg-white rounded-lg h-10 flex items-center justify-between mx-4 mb-4 p-4 font-semibold cursor-pointer"><p>{list.name}</p>
+                    <button onClick={(e) => { e.stopPropagation(); handleDelete(list.id)}}><p>🗑</p></button>
                 </div>)
             });
 
