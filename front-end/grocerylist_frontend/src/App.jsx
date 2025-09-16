@@ -10,6 +10,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
 import ListPage from "./pages/ListPage.jsx";
+import ProductType from "./pages/ProductType.jsx";
+import AllProducts from "./pages/AllProducts.jsx";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/all" element={<AllProducts />} />
+          <Route path="/products/:productType" element={<ProductType />} />
           <Route path="/my-lists" element={<AllLists />} />
           <Route path="/my-list/new" element={<ListPage />} />
           <Route path="/my-list/:listId" element={<ListPage />} />

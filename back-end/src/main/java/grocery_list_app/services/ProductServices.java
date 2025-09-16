@@ -32,7 +32,7 @@ public class ProductServices {
     public List<String> getProductTypes (String email){
         userServices.getUserByEmail(email);
         return Arrays.stream(ProductType.values())
-                .map(ProductType::getValue)
+                .map(ProductType::getDisplayName)
                 .toList();
     }
 
