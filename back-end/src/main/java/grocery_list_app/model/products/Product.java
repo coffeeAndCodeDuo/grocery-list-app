@@ -27,8 +27,8 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
-    @Lob
-    private byte[] image;
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @ManyToMany(mappedBy = "products")
     private List<GroceryList> groceryList = new ArrayList<>();
@@ -45,10 +45,6 @@ public class Product {
         return type;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -61,12 +57,16 @@ public class Product {
         this.type = type;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     @Override
     public String toString(){
         return name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getProductsByType, getProductTypes, getAllProducts } from "../services/ProductServices";
 import { useNavigate } from "react-router-dom";
-import ProductsCard from "./ProductsCard";
 
 export default function ProductTypeCard() {
 
@@ -18,14 +17,10 @@ export default function ProductTypeCard() {
 
     const productTypes = [];
     productType.forEach((typeList) => {
-        productTypes.push( <div key={typeList} className="bg-white p-4 w-full h-28 rounded-lg flex items-center justify-center cursor-pointer "><h6 className="whitespace-pre-line text-center">{typeList}</h6>
+        productTypes.push( <div key={typeList.id} className="bg-white p-4 w-full h-28 rounded-lg flex items-center justify-center cursor-pointer" onClick={() =>navigate("/products/"+ typeList.id)}><h6 className="whitespace-pre-line text-center">{typeList.displayName}</h6>
 
         </div>);
     });
-
-    const handleAllProductsClick = async () => {
-        const allProducts = await getAllProducts();
-    };
 
     return (
         <div>

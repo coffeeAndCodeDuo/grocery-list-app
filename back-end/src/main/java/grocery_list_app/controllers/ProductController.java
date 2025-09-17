@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -35,9 +36,9 @@ public class ProductController {
     }
 
     @GetMapping("/types")
-    public ResponseEntity<List<String>> listTypes (Authentication authentication){
+    public ResponseEntity<List<Map<String,String>>> listTypes (Authentication authentication){
         String email = authentication.getName();
-        List<String> productTypes = productServices.getProductTypes(email);
+        List<Map<String, String>> productTypes = productServices.getProductTypes(email);
         return ResponseEntity.ok(productTypes);
     }
 

@@ -1,6 +1,6 @@
 INSERT INTO products (NAME, TYPE)
-VALUES ('APPLE', 'FRUITS'),
-       ('STRAWBERRY', 'FRUITS'),
+VALUES ('Apple', 'FRUITS'),
+        ('STRAWBERRY', 'FRUITS'),
        ('WATERMELON', 'FRUITS'),
        ('PEAR', 'FRUITS'),
        ('GRAPE', 'FRUITS'),
@@ -77,4 +77,5 @@ VALUES ('APPLE', 'FRUITS'),
        ('DISH SOUP', 'HOMECLEANING'),
        ('SHAMPOO', 'HEALTHBEAUTY'),
        ('TOOTH PASTE', 'HEALTHBEAUTY');
+
 

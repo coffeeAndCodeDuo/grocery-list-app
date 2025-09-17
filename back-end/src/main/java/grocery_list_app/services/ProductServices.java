@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductServices {
@@ -29,10 +30,13 @@ public class ProductServices {
         return productRepository.findByType(type);
     }
 
-    public List<String> getProductTypes (String email){
+    public List<Map<String, String>> getProductTypes (String email){
         userServices.getUserByEmail(email);
         return Arrays.stream(ProductType.values())
-                .map(ProductType::getDisplayName)
+                .map(pt -> Map.of(
+                        "id", pt.getId(),
+                        "displayName", pt.getDisplayName()
+                ))
                 .toList();
     }
 

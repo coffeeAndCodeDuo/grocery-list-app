@@ -8,7 +8,7 @@ export default function AllProducts() {
             <PrivateHeader />
             <MainCard 
                 topContent={<h4>All Products</h4>}
-                //Começar pelo bottoncontent amanha
+                bottomContent={<div><ProductsCard type="all" /></div>}
                 bgColor="bg-light-blue"
             />
         </div>
