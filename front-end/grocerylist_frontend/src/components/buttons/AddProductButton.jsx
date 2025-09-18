@@ -1,7 +1,7 @@
 export default function AddProductButton() {
     return (
         <div>
-            <button className="text-blue-add absolute top-0 right-0"><h1>+</h1></button>
+            <button className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center bg-blue-add text-white rounded-full shadow text-sm">+</button>
         </div>
     );
 }

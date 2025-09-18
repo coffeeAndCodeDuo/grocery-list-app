@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .cors(cors -> {})//desativar Cross Site Request Forgery, que vem ativado por definição no spring security
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/auth/register").permitAll()
+                        .requestMatchers("/images/**").permitAll() //pode causar problemas de privacidade com fotos de perfil
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //mudar para if_required ou apagar esta linha se quisermos manter login
