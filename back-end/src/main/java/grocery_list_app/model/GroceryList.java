@@ -5,6 +5,7 @@ import grocery_list_app.model.products.Product;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity

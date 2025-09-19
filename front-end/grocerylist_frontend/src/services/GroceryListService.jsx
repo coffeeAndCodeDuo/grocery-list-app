@@ -95,3 +95,40 @@ export async function updateListName(groceryListId, name) {
     console.log(data);
     return data;
 }
+
+export async function addProductToList(groceryListId, productId) {
+    
+    const response = await fetch (`${BASE_URL}/${groceryListId}/${productId}`, {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to add product to list");
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+export async function removeProductFromList(groceryListId, productId) {
+
+    const response = await fetch (`${BASE_URL}/${groceryListId}/${productId}`, {
+        method: "DELETE", 
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to remove product from list");
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;     
+}

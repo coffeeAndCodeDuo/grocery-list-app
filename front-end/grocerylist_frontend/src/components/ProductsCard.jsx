@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllProducts, getProductsByType } from "../services/ProductServices";
 import AddProductButton from "./buttons/AddProductButton";
 import DropDownButton from "./buttons/DropDownButton";
+import { list } from "postcss";
 
 export default function ProductsCard({type}) {
     const [products, setProducts] = useState([]);
@@ -28,9 +29,9 @@ export default function ProductsCard({type}) {
     products.forEach((product) => {
         productList.push( 
             <div key={product.id} className="flex flex-col items-center">
-                <div className="relative bg-white  w-full h-14 rounded-lg flex items-center justify-center">
+                <div className="relative bg-white  w-full h-14 p-1 rounded-lg flex items-center justify-center">
                    <img src={`http://localhost:8081/grocery-list${product.imageUrl}`} className="max-h-full max-w-full object-contain"/> 
-                   <AddProductButton/>
+                   <AddProductButton productId={product.id}/>
                 </div>
                 
                 <p className="text-center text-xxs mt-1">{product.name}</p>
