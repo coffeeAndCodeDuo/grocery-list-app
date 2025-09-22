@@ -1,6 +1,7 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegister, userLogin } from "../../services/AuthService";
+import { getUserProfile } from "../../services/UserService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,6 +42,9 @@ export default function UserForm({type}){
                     formData.email,
                     formData.password
                 );
+
+                const profile = await getUserProfile();
+                localStorage.setItem("userId", profile.id);
 
                 navigate("/home");
             }

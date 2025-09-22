@@ -1,7 +1,8 @@
 const BASE_URL = "http://localhost:8081/grocery-list/api/products";
-const token = localStorage.getItem("token");
 
 export async function getProductsByType(productType){
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch(`${BASE_URL}/${productType}`, {
         method: "GET",
@@ -22,6 +23,8 @@ export async function getProductsByType(productType){
 
 export async function getProductTypes(){
 
+    const token = localStorage.getItem("token");
+
     const response = await fetch(`${BASE_URL}/types`, {
         method: "GET",
         headers: {
@@ -41,6 +44,8 @@ export async function getProductTypes(){
 }
 
 export async function getAllProducts(){
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch(`${BASE_URL}`, {
         method: "GET",

@@ -4,7 +4,7 @@ import { addProductToList } from "../../services/GroceryListService";
 export default function AddProductButton({productId}) {
 
     const handleAddProduct = async () => {
-        const selectedListId = localStorage.getItem("selectedListId");
+        const selectedListId = localStorage.getItem("selectedListId_" + localStorage.getItem("userId"));
         if (!selectedListId) {
             toast.error("Please select a list first", {autoClose: 1500});
             return;

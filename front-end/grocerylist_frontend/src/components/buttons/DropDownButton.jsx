@@ -20,19 +20,33 @@ useEffect(() => {
     const fetchLists = async () => {
         const lists = await getAllLists();
         setListOptions(lists);
+    
+    const userId = localStorage.getItem("userId");
+    const savedListName = localStorage.getItem(`selectedList_${userId}`);
+    const savedListId = localStorage.getItem(`selectedListId_${userId}`);
+
+    const stillExists = lists.some(l => l.id === Number(savedListId));
+
+        if (savedListName && savedListId && stillExists) {
+            setSelectedList(savedListName);
+        } else {
+            setSelectedList("Select a list");
+            localStorage.removeItem(`selectedList_${userId}`);
+            localStorage.removeItem(`selectedListId_${userId}`);
+        }
+
     };
+   
     fetchLists();
 
-    const savedList = localStorage.getItem("selectedList");
-    if (savedList) {
-      setSelectedList(savedList);
-    }
 }, []);
 
 const handleListSelection = (list) => {
+    const userId = localStorage.getItem("userId");
+
     setSelectedList(list.name); 
-    localStorage.setItem("selectedList", list.name);
-    localStorage.setItem("selectedListId", list.id);
+    localStorage.setItem(`selectedList_${userId}`, list.name);
+    localStorage.setItem(`selectedListId_${userId}`, list.id);
     setIsOpen(false);
 
 };    

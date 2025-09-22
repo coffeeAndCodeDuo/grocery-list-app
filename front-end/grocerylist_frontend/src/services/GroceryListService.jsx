@@ -1,9 +1,9 @@
 const BASE_URL = 'http://localhost:8081/grocery-list/api/my-lists';
 import { toast } from "react-toastify";
 
-const token = localStorage.getItem("token");
-
 export async function getAllLists() {
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch (`${BASE_URL}`, {
         method: "GET", 
@@ -22,6 +22,8 @@ export async function getAllLists() {
 }
 
 export async function createNewList(name) {
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch (`${BASE_URL}`, {
         method: "POST", 
@@ -43,6 +45,8 @@ export async function createNewList(name) {
 
 export async function getListById(listId) {
 
+    const token = localStorage.getItem("token");
+
     const response = await fetch (`${BASE_URL}/${listId}`, {
         method: "GET", 
         headers: {
@@ -61,6 +65,8 @@ export async function getListById(listId) {
 
 export async function deleteListById(groceryListId) {
 
+    const token = localStorage.getItem("token");
+
     const response = await fetch (`${BASE_URL}/${groceryListId}`, {
         method: "DELETE", 
         headers: {
@@ -77,6 +83,8 @@ export async function deleteListById(groceryListId) {
 }
 
 export async function updateListName(groceryListId, name) {
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch (`${BASE_URL}/${groceryListId}`, {
         method: "PUT", 
@@ -97,6 +105,8 @@ export async function updateListName(groceryListId, name) {
 }
 
 export async function addProductToList(groceryListId, productId) {
+
+    const token = localStorage.getItem("token");
     
     const response = await fetch (`${BASE_URL}/${groceryListId}/${productId}`, {
         method: "POST", 
@@ -116,6 +126,8 @@ export async function addProductToList(groceryListId, productId) {
 }
 
 export async function removeProductFromList(groceryListId, productId) {
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch (`${BASE_URL}/${groceryListId}/${productId}`, {
         method: "DELETE", 
