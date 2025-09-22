@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import MainCard from "../components/MainCard";
 import { useState, useEffect } from "react";
 import { getListById } from "../services/GroceryListService";
+import CheckBox from "../components/buttons/CheckBox";
 
 export default function ListPage() {
   const { listId } = useParams();
@@ -21,7 +22,10 @@ export default function ListPage() {
 
           const products = [];
           data.products.forEach((product) => {
-            products.push( <div key={product.id}><h6>{product.name}</h6></div>);
+            products.push( <div className="flex items-center" key={product.id}>
+              <CheckBox productId={product.id} listId={listId}/> 
+              <h6 className="ml-2">{product.name}</h6>
+              </div>);
           });
           setListProducts(products);
         

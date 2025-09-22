@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 import grocery_list_app.model.products.Product;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "grocery_list")
@@ -28,7 +26,8 @@ public class GroceryList {
             joinColumns = @JoinColumn(name = "grocerylist_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private Set<Product> products = new HashSet<>();
+    @OrderColumn(name = "product_order") // mantém a ordem de inserção
+    private List<Product> products = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -59,11 +58,11 @@ public class GroceryList {
         this.user = user;
     }
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

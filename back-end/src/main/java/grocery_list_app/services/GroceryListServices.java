@@ -78,7 +78,7 @@ public class GroceryListServices {
         return groceryList;
     }
 
-    public Set<Product> listGroceryListProducts(Integer groceryListId){
+    public List<Product> listGroceryListProducts(Integer groceryListId){
         GroceryList groceryList = groceryListRepository.findById(groceryListId)
                 .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));
         return groceryList.getProducts();
