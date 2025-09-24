@@ -23,9 +23,11 @@ export default function ListPage() {
 
           const products = [];
           data.products.forEach((product) => {
-            products.push( <div className="flex items-center" key={product.id}>
+            products.push( <div className="flex items-center justify-between w-full" key={product.id}>
+              <div className="flex items-center">
               <CheckBox productId={product.id} listId={listId}/> 
               <h6 className="ml-2">{product.name}</h6>
+              </div>
               <DeleteProductButton productId={product.id} groceryListId={listId} setListProducts={setListProducts}/>
               </div>);
           });
@@ -54,7 +56,7 @@ export default function ListPage() {
       topContent={<div className="w-76 flex flex-row items-center justify-between pr-4">{listNameForm()}</div>}
       bottomContent={<div className="mt-8 mx-6 overflow-y-auto">
         {listProducts.length > 0 ? (
-          <div className="space-y-3">
+          <div className="space-y-2">
             {listProducts}
           </div>
         ) : (

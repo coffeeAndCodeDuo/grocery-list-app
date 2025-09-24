@@ -3,15 +3,14 @@ import { toast } from "react-toastify";
 import orangeTrash from "../../assets/orangeTrash.png";
 
 
-export default function DeleteProductButton({groceryListId, productId, setListProducts, setIsChecked}) {
+export default function DeleteProductButton({groceryListId, productId, setListProducts}) {
 
     const handleDeleteProduct = async () => {
-        
         
         try{
             await removeProductFromList(groceryListId, productId);
             setListProducts(prevProducts => prevProducts.filter(p => p.key !== String(productId)));
-            setIsChecked(false);
+            localStorage.setItem(`checkbox-checked-${groceryListId}-${productId}`, false);
             toast.success("Product removed from list", {autoClose: 1000});
         } catch (error) {
             toast.error("Failed to remove product from list", {autoClose: 1000});
@@ -20,7 +19,7 @@ export default function DeleteProductButton({groceryListId, productId, setListPr
 
     return (
         <div>
-            <img onClick={handleDeleteProduct} src={orangeTrash} className="w-10 h-10 flex items-center justify-center cursor-pointer"/>
+            <img onClick={handleDeleteProduct} src={orangeTrash} className="w-8 h-8 flex items-center cursor-pointer"/>
         </div>
     );
 }
