@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { getListById } from "../services/GroceryListService";
 import CheckBox from "../components/buttons/CheckBox";
 import DeleteProductButton from "../components/buttons/DeleteProductButton";
+import ListName from "../components/ListName";
+import AddProductFromList from "../components/buttons/AddProductFromList";
 
 export default function ListPage() {
   const { listId } = useParams();
@@ -30,6 +32,7 @@ export default function ListPage() {
               </div>
               <DeleteProductButton productId={product.id} groceryListId={listId} setListProducts={setListProducts}/>
               </div>);
+              
           });
           setListProducts(products);
         
@@ -43,7 +46,7 @@ export default function ListPage() {
 
   const listNameForm = () => {
     return listId ?  (
-          <UpdateListNameForm listId={listId} name={listName} />
+          <ListName listId={listId} name={listName} />
         ) : (
           <AddListNameForm />
         )
@@ -58,9 +61,10 @@ export default function ListPage() {
         {listProducts.length > 0 ? (
           <div className="space-y-2">
             {listProducts}
+            <div><AddProductFromList /></div>
           </div>
         ) : (
-          <div className="text-orange-highlight">Add products</div>
+          <div><AddProductFromList /></div>
         )}
       </div>}
       bgColor="bg-light-yellow"
