@@ -1,7 +1,6 @@
 import PrivateHeader from "../components/headers/PrivateHeader";
 import AddListNameForm from "../components/forms/AddListNameForm";
-import UpdateListNameForm from "../components/forms/UpdateListNameForm";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import MainCard from "../components/MainCard";
 import { useState, useEffect } from "react";
 import { getListById } from "../services/GroceryListService";
@@ -14,8 +13,9 @@ export default function ListPage() {
   const { listId } = useParams();
   const [listName, setListName] = useState("");
   const [listProducts, setListProducts] = useState([]);
+
+  const location = useLocation();
   
-  useEffect(() => {
     async function fetchList() {
       if (listId) {
         const data = await getListById(listId);
@@ -40,6 +40,8 @@ export default function ListPage() {
       }
 
     }
+  
+  useEffect(() => {
     fetchList();
   }, [listId]);
 
@@ -58,15 +60,20 @@ export default function ListPage() {
       <MainCard 
       topContent={<div className="w-76 flex flex-row items-center justify-between pr-4">{listNameForm()}</div>}
       bottomContent={<div className="mt-8 mx-6 overflow-y-auto">
-        {listProducts.length > 0 ? (
+
+        {location.pathname == "/my-list/new"
+        ? null
+        : listProducts.length > 0 ? (
           <div className="space-y-2">
             {listProducts}
-            <div><AddProductFromList /></div>
+            <div><AddProductFromList onClose={fetchList}/></div>
+            
           </div>
         ) : (
-          <div><AddProductFromList /></div>
+          <div><AddProductFromList onClose={fetchList}/></div>
         )}
-      </div>}
+      </div>
+    }
       bgColor="bg-light-yellow"
       />
     </div>

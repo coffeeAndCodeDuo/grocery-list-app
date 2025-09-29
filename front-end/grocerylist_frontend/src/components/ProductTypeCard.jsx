@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProductsByType, getProductTypes, getAllProducts } from "../services/ProductServices";
+import { getProductTypes } from "../services/ProductServices";
 import { useNavigate } from "react-router-dom";
 
 export default function ProductTypeCard() {

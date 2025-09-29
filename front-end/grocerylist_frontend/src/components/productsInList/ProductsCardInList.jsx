@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { getAllProducts, getProductsByType } from "../services/ProductServices";
-import AddProductButton from "./buttons/AddProductButton";
-import DropDownButton from "./buttons/DropDownButton";
+import { getAllProducts, getProductsByType } from "../../services/ProductServices";
+import AddProductButton from "../buttons/AddProductButton";
 
-export default function ProductsCard({type}) {
+export default function ProductsCardInList({type}) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -30,10 +29,10 @@ export default function ProductsCard({type}) {
             <div key={product.id} className="flex flex-col items-center">
                 <div className="relative bg-white  w-full h-14 p-1 rounded-lg flex items-center justify-center">
                    <img src={`http://localhost:8081/grocery-list${product.imageUrl}`} className="max-h-full max-w-full object-contain"/> 
-                   <AddProductButton type={"product"} productId={product.id}/>
+                   <AddProductButton type={"list"} productId={product.id}/>
                 </div>
-                
-                <p className="text-center text-xxs mt-1">{product.name}</p>
+            
+                <h6 className="text-center mt-1">{product.name}</h6>
             </div>
 
         );
@@ -41,11 +40,9 @@ export default function ProductsCard({type}) {
 
     return (
         <div>
-            <div className="bg-white rounded-lg h-8 flex items-center mx-6 mt-10 mb-6 p-4"><DropDownButton/></div>
-            <div className="grid grid-cols-3 gap-x-8 gap-y-6 mb-12 mt-10 px-6">
+            <div className="grid grid-cols-3 gap-x-8 gap-y-6 mb-12 mt-10 px-12">
                 {productList}
             </div>
         </div>
     );
 }
-

@@ -1,7 +1,10 @@
 import { toast } from "react-toastify";
 import { addProductToList } from "../../services/GroceryListService";
+import { useParams } from "react-router-dom";
 
-export default function AddProductButton({productId}) {
+export default function AddProductButton({type, productId}) {
+
+    const {listId} = useParams();
 
     const handleAddProduct = async () => {
         const selectedListId = localStorage.getItem("selectedListId_" + localStorage.getItem("userId"));
@@ -11,8 +14,15 @@ export default function AddProductButton({productId}) {
         }
 
         try{
-            await addProductToList(selectedListId, productId);
-            toast.success("Product added to list", {autoClose: 1000});
+            if(type === "product"){
+                await addProductToList(selectedListId, productId);
+                toast.success("Product added to list", {autoClose: 1000});
+            }
+            if(type === "list"){
+                await addProductToList(listId, productId);
+                toast.success("Product added to list", {autoClose: 1000});
+            }
+
         } catch (error) {
             toast.error("Product already in the list", {autoClose: 1000});
         }

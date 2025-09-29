@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 export default function UpdateListNameForm({listId, name, onSuccess}) {
 
-
     //para começar com o nome atual da lista
     const [newName, setNewName] = useState("");
 
@@ -13,7 +12,6 @@ export default function UpdateListNameForm({listId, name, onSuccess}) {
     useEffect(() => {
         setNewName(name);
     }, [name]);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
