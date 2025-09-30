@@ -1,9 +1,9 @@
 grocery_list_app/services/jwtservices/CustomUserDetails.class
 grocery_list_app/config/JwtAuthenticationFilter.class
-grocery_list_app/controllers/UserController.class
 grocery_list_app/services/jwtservices/JwtUserDetailsService.class
+grocery_list_app/config/SecurityConfig.class
+grocery_list_app/controllers/UserController.class
 grocery_list_app/services/jwtservices/JwtService.class
 grocery_list_app/controllers/AuthController.class
 grocery_list_app/config/ProductTypeConverter.class
 grocery_list_app/exceptions/ProductAlreadyInListException.class
-grocery_list_app/config/SecurityConfig.class

@@ -8,13 +8,14 @@ export default function AddProductButton({type, productId}) {
 
     const handleAddProduct = async () => {
         const selectedListId = localStorage.getItem("selectedListId_" + localStorage.getItem("userId"));
-        if (!selectedListId) {
-            toast.error("Please select a list first", {autoClose: 1500});
-            return;
-        }
-
+    
         try{
             if(type === "product"){
+                if (!selectedListId) {
+                    toast.error("Please select a list first", {autoClose: 1500});
+                    return;
+                }
+
                 await addProductToList(selectedListId, productId);
                 toast.success("Product added to list", {autoClose: 1000});
             }

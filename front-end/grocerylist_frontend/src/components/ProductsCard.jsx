@@ -17,7 +17,7 @@ export default function ProductsCard({type}) {
                     setProducts(productsByType);
                 }
             } catch (error) {
-                console.error("Erro ao buscar produtos:", error);
+                console.error("Error fetching products:", error);
             }
         };
 

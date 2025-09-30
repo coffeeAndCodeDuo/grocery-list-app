@@ -8,6 +8,7 @@ import CheckBox from "../components/buttons/CheckBox";
 import DeleteProductButton from "../components/buttons/DeleteProductButton";
 import ListName from "../components/ListName";
 import AddProductFromList from "../components/buttons/AddProductFromList";
+import BackButton2 from "../components/buttons/BackButton2";
 
 export default function ListPage() {
   const { listId } = useParams();
@@ -56,6 +57,7 @@ export default function ListPage() {
 
   return (
     <div>
+      <BackButton2 />
       <PrivateHeader />
       <MainCard 
       topContent={<div className="w-76 flex flex-row items-center justify-between pr-4">{listNameForm()}</div>}
