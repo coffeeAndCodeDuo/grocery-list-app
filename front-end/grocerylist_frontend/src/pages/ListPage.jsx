@@ -8,7 +8,7 @@ import CheckBox from "../components/buttons/CheckBox";
 import DeleteProductButton from "../components/buttons/DeleteProductButton";
 import ListName from "../components/ListName";
 import AddProductFromList from "../components/buttons/AddProductFromList";
-import BackButton2 from "../components/buttons/BackButton2";
+import BackButton from "../components/buttons/BackButton";
 
 export default function ListPage() {
   const { listId } = useParams();
@@ -16,6 +16,7 @@ export default function ListPage() {
   const [listProducts, setListProducts] = useState([]);
 
   const location = useLocation();
+  const fromCreate = location.state?.fromCreate || false; //fromCreate é uma flag que indica que o user veio da pagina de criação da lista, que permite definir se quando se faz back se anda 1 ou 2 páginas
   
     async function fetchList() {
       if (listId) {
@@ -57,7 +58,7 @@ export default function ListPage() {
 
   return (
     <div>
-      <BackButton2 />
+      <BackButton type={fromCreate ? "backTwo" : "backOne"} />
       <PrivateHeader />
       <MainCard 
       topContent={<div className="w-76 flex flex-row items-center justify-between pr-4">{listNameForm()}</div>}

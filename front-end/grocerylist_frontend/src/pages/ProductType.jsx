@@ -28,7 +28,7 @@ export default function ProductType() {
 
     return (
         <div>
-        <BackButton />
+        <BackButton type="backOne" />
         <PrivateHeader />
         <MainCard 
             topContent={<h4>{displayType}</h4>}

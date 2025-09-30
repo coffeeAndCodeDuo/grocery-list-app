@@ -14,7 +14,7 @@ export default function AddListNameForm() {
         let response = await createNewList(name);
         console.log("Backend response:", response);
 
-        navigate("/my-list/"+ response.id);
+        navigate("/my-list/"+ response.id, { state: { fromCreate: true } });
         
     }    
 

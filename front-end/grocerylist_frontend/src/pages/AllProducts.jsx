@@ -6,7 +6,7 @@ import ProductsCard from "../components/ProductsCard";
 export default function AllProducts() {
     return (
         <div>
-            <BackButton />
+            <BackButton type="backOne" />
             <PrivateHeader />
             <MainCard 
                 topContent={<h4>All Products</h4>}
