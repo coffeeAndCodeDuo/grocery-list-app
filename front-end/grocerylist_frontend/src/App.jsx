@@ -5,31 +5,30 @@ import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
 import AllLists from "./pages/AllLists.jsx";
 import Profile from "./pages/UserProfile.jsx";
-import SetPassword from "./pages/SetPassword.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
 import ListPage from "./pages/ListPage.jsx";
 import ProductType from "./pages/ProductType.jsx";
 import AllProducts from "./pages/AllProducts.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx"; 
 
 function App() {
   return (
      <>
     <Router>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/all" element={<AllProducts />} />
-          <Route path="/products/:productType" element={<ProductType />} />
-          <Route path="/my-lists" element={<AllLists />} />
-          <Route path="/my-list/new" element={<ListPage />} />
-          <Route path="/my-list/:listId" element={<ListPage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/forget-password" element={<SetPassword />} />
+          <Route path="/products" element={<PrivateRoute><Products /></PrivateRoute>} />
+          <Route path="/products/all" element={<PrivateRoute><AllProducts /></PrivateRoute>} />
+          <Route path="/products/:productType" element={<PrivateRoute><ProductType /></PrivateRoute>} />
+          <Route path="/my-lists" element={<PrivateRoute><AllLists /></PrivateRoute>} />
+          <Route path="/my-list/new" element={<PrivateRoute><ListPage /></PrivateRoute>} />
+          <Route path="/my-list/:listId" element={<PrivateRoute><ListPage /></PrivateRoute>} />
+          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         </Routes>
 
         <ToastContainer position="top-center" autoClose={false} />
