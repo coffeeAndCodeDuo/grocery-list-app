@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { userRegister, userLogin } from "../../services/AuthService";
 import { getUserProfile } from "../../services/UserService";
 import { toast } from "react-toastify";
+import { Eye, EyeOff } from "lucide-react";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function UserForm({type}){
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
     //Guardar valores do formulario 
@@ -34,8 +37,19 @@ export default function UserForm({type}){
                     formData.email,
                     formData.password
                 );
-                toast.success("Your account was created!");
-                setTimeout(() => navigate("/"), 3000);
+
+                    if(formData.firstName === "" || formData.lastName === "" || formData.email === "" || formData.password === ""){
+                        toast.error("Please fill in all fields", {autoClose: 1000});
+                        return;
+                    }
+
+                    if(formData.password.length < 8){
+                        toast.error("Password must be at least 8 characters long", {autoClose: 1000});
+                        return;
+                    }
+
+                    toast.success("Your account was created!");
+                    setTimeout(() => navigate("/"), 3000);
         
             } else if (type === "login"){
                 response = await userLogin(
@@ -91,8 +105,24 @@ export default function UserForm({type}){
 
             <div className="flex flex-col mx-auto w-76 mb-4 gap-1.5">
             <label htmlFor="password"><h5>Password</h5></label>
-            <input name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Enter your password"
-            className="rounded-lg h-10 placeholder:text-xs pl-2 focus:outline-none focus:ring-black focus:ring-1"/>
+            <div className="relative">
+                <input
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                className="rounded-lg h-10 placeholder:text-xs pl-2 w-full focus:outline-none focus:ring-black focus:ring-1"
+                />
+                <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center text-gray-500 h-1 pr-2"
+                tabIndex={-1}
+                >
+                {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
+                </button>
+            </div>
             </div>
 
             <div>
