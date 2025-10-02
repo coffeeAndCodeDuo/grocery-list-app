@@ -4,7 +4,6 @@ import Home from "./pages/Home.jsx";
 import Register from "./pages/Register.jsx";
 import Products from "./pages/Products.jsx";
 import AllLists from "./pages/AllLists.jsx";
-import Profile from "./pages/UserProfile.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastClear from "./components/ToastClear.jsx";
@@ -28,7 +27,6 @@ function App() {
           <Route path="/my-lists" element={<PrivateRoute><AllLists /></PrivateRoute>} />
           <Route path="/my-list/new" element={<PrivateRoute><ListPage /></PrivateRoute>} />
           <Route path="/my-list/:listId" element={<PrivateRoute><ListPage /></PrivateRoute>} />
-          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         </Routes>
 
         <ToastContainer position="top-center" autoClose={false} />

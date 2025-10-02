@@ -1,5 +1,4 @@
 import BackButton from "../components/buttons/BackButton";
-import LogoutButton from "../components/buttons/LogOutButton";
 import PrivateHeader from "../components/headers/PrivateHeader";
 import MainCard from "../components/MainCard";
 import ProductsCard from "../components/ProductsCard";
@@ -28,8 +27,7 @@ export default function ProductType() {
     const displayType = productTypeLabels[productType] || "Products";
 
     return (
-        <div>
-        <LogoutButton />    
+        <div>   
         <BackButton type="backOne" />
         <PrivateHeader />
         <MainCard 

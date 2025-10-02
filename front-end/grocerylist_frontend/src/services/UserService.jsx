@@ -18,3 +18,25 @@ export async function getUserProfile() {
     return data;
 
 }
+
+export async function changeUserNames(firstName, lastName){
+
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${BASE_URL}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({firstName, lastName})
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch user profile');
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+}

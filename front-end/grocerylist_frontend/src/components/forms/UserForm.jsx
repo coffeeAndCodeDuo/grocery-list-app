@@ -114,14 +114,15 @@ export default function UserForm({type}){
                 placeholder="Enter your password"
                 className="rounded-lg h-10 placeholder:text-xs pl-2 w-full focus:outline-none focus:ring-black focus:ring-1"
                 />
+                {formData.password &&
                 <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center text-gray-500 h-1 pr-2"
-                tabIndex={-1}
                 >
                 {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
                 </button>
+                }
             </div>
             </div>
 

@@ -2,7 +2,6 @@ import PrivateHeader from "../components/headers/PrivateHeader";
 import MainCard from "../components/MainCard";
 import { useEffect, useState } from "react";
 import { getUserProfile } from '../services/UserService.jsx';
-import HomeLists from "../components/ListsInHomePage.jsx";
 import { useNavigate } from "react-router-dom";
 import ListsInHomePage from "../components/ListsInHomePage.jsx";
 

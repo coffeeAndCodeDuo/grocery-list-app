@@ -8,7 +8,7 @@ export default function LogoutButton() {
     navigate("/login", { replace: true }); // redireciona para login
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return <button onClick={handleLogout} className="text-link-red underline text-base font-semibold" >Logout</button>;
 }
 
 
