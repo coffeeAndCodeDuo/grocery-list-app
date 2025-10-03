@@ -10,18 +10,18 @@ export default function Home() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
+  const fetchProfile = async () => {
     const data = await getUserProfile();
     setProfile(data);
   };
-  fetchProfile();
-  },  []);
-    
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
 
   return (
     <div>
-      <PrivateHeader />
+      <PrivateHeader onClose= {fetchProfile} />
       <MainCard 
         topContent={<h4>Hi, {profile?.firstName} 👋 </h4>}
         bottomContent={

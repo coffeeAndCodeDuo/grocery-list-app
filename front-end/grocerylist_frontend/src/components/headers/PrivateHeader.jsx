@@ -2,15 +2,17 @@ import { useState } from 'react';
 import profileImg from '../../assets/profile.png';
 import { useNavigate } from 'react-router-dom';
 import ProfileForm from '../user/ProfileForm';
+import { X } from "lucide-react";
 
 
-export default function PrivateHeader() {
+export default function PrivateHeader({ onClose }) {
 
     const navigate = useNavigate();
     const [profileOpen, setProfileOpen] = useState(false);
 
      const handleClose = () => {
         setProfileOpen(false);
+        if(onClose) onClose();
     }
 
     return (
@@ -26,6 +28,7 @@ export default function PrivateHeader() {
             <div className={`fixed right-0 bottom-0 h-full w-2/3 bg-background-grey text-black z-50 transform transition-transform duration-300 ${
                         profileOpen ? "translate-x-0" : "translate-x-full"
                     } shadow-lg`}>
+                        <X className="mt-6 ml-8" size={20} onClick={handleClose}/>
                         <ProfileForm/>
             </div>
 
