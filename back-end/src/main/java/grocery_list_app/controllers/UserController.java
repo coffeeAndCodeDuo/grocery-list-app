@@ -42,6 +42,15 @@ public class UserController {
         return ResponseEntity.ok().body("Password updated");
     }
 
+    @DeleteMapping({"/"})
+    public ResponseEntity<?> deleteUser(Authentication authentication) {
+        String email = authentication.getName();
+        userServices.deleteUser(email);
+
+        return ResponseEntity.noContent().build();
+    }
+
+
     /*
     /grocery-list/profile/ -> PUT (Falta alterar foto - para mais tarde)
      */

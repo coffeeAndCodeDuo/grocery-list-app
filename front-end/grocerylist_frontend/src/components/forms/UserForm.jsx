@@ -31,25 +31,30 @@ export default function UserForm({type}){
             let response;
 
             if(type === "register"){
-                response = await userRegister(
+
+                if(formData.firstName === "" || formData.lastName === "" || formData.email === "" || formData.password === ""){
+                    
+                    return toast.error("Please fill in all fields", {autoClose: 1000});
+                }
+
+                if(formData.password.length < 8){
+                    
+                    return toast.error("Password must be at least 8 characters long", {autoClose: 1000});
+                }
+
+                else {
+                    response = await userRegister(
                     formData.firstName,
                     formData.lastName,
                     formData.email,
                     formData.password
-                );
-
-                    if(formData.firstName === "" || formData.lastName === "" || formData.email === "" || formData.password === ""){
-                        toast.error("Please fill in all fields", {autoClose: 1000});
-                        return;
+                    );
+                    if (response === "Email already registered"){
+                        return toast.error("Email already in use", {autoClose: 1000});
                     }
-
-                    if(formData.password.length < 8){
-                        toast.error("Password must be at least 8 characters long", {autoClose: 1000});
-                        return;
-                    }
-
                     toast.success("Your account was created!");
                     setTimeout(() => navigate("/"), 3000);
+                }
         
             } else if (type === "login"){
                 response = await userLogin(
