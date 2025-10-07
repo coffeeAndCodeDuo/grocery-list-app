@@ -19,7 +19,7 @@ export default function PrivateHeader({ onClose }) {
     <div>
         <div className="flex items-center justify-between w-80 p-4 mb-12 mx-auto"> 
             <h1 onClick={() => {navigate("/home")}} className="w-full text-center cursor-pointer font-semibold">Grocery List</h1>
-            <img src={profileImg} alt="User" className="h-8 w-8 object-cover" 
+            <img src={profileImg} alt="User" className="h-8 w-8 object-cover cursor-pointer" 
             onClick={() => setProfileOpen(true)}/>
             {profileOpen && (
                     <div onClick={handleClose} className="fixed inset-0 bg-black bg-opacity-50 z-40 "></div>
@@ -28,7 +28,7 @@ export default function PrivateHeader({ onClose }) {
             <div className={`fixed right-0 bottom-0 h-full w-2/3 bg-background-grey text-black z-50 transform transition-transform duration-300 ${
                         profileOpen ? "translate-x-0" : "translate-x-full"
                     } shadow-lg`}>
-                        <X className="mt-6 ml-8" size={20} onClick={handleClose}/>
+                        <X className="mt-6 ml-8 cursor-pointer" size={20} onClick={handleClose}/>
                         <ProfileForm/>
             </div>
 
