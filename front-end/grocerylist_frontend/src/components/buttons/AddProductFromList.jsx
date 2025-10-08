@@ -1,7 +1,7 @@
 import ProductTypeCardInList from "../productsInList/ProductTypeCardInList";
 import ProductsCardInList from "../productsInList/ProductsCardInList";
 import {useState } from "react";
-import BackArrow from "../../assets/arrow.svg"
+import BackArrow from "../../assets/arrow2.png"
 
 export default function AddProductFromList({onClose}) {
 
@@ -40,7 +40,7 @@ export default function AddProductFromList({onClose}) {
                     } rounded-t-2xl shadow-lg`}>
                     {!selectedType && (
                             <div>
-                                <button onClick={handleClose} className="mt-6 px-8 flex flex-row gap-2"><img src={BackArrow}></img><h5>Back</h5></button>
+                                <button onClick={handleClose} className="mt-6 px-8 flex flex-row gap-2"><img src={BackArrow} className="w-8 h-auto"></img></button>
                                 <ProductTypeCardInList onSelectType={handleSelectType} />
                             </div>
                     )}
@@ -49,7 +49,7 @@ export default function AddProductFromList({onClose}) {
                     {selectedType && (
                         <>
                             <button onClick={handleBack} className="mt-6 px-8 flex flex-row gap-2">
-                            <img src={BackArrow}></img><h5>Back</h5>
+                            <img src={BackArrow} className="w-8 h-auto"></img>
                             </button>
                             <ProductsCardInList type={selectedType} />
                         </>

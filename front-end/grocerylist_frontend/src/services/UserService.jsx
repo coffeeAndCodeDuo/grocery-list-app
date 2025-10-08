@@ -47,9 +47,10 @@ export async function deleteUserAccount(){
     
     const token = localStorage.getItem('token');
 
-    const response = await fetch(`${BASE_URL}`, {
+    const response = await fetch(`${BASE_URL}/`, {
         method: 'DELETE',
         headers: {
+            "Content-Type": "application/json",
             'Authorization': `Bearer ${token}`
         }
     });
@@ -58,7 +59,6 @@ export async function deleteUserAccount(){
         throw new Error('Failed to delete user account');
     }
 
-    toast.success("Account deleted successfully");
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     

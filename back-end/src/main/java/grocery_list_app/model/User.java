@@ -28,7 +28,7 @@ public class User {
     @Lob
     private byte[] image;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval = true )
     @JsonManagedReference("user-groceryList")
     @JsonIgnore
     private List<GroceryList> groceryList;

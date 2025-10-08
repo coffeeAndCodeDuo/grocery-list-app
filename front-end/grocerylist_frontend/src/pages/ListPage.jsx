@@ -52,7 +52,7 @@ export default function ListPage() {
     return listId ?  (
           <ListName listId={listId} name={listName} />
         ) : (
-          <AddListNameForm />
+          <AddListNameForm type="nameInList" />
         )
   };    
 

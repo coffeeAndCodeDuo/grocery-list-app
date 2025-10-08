@@ -13,6 +13,7 @@ export default function ProfileForm(){
         const data = await getUserProfile();
         setUserInfo(data);
         setOriginalUserInfo(data);
+
     };
 
     useEffect(() => {
@@ -91,7 +92,7 @@ export default function ProfileForm(){
                     <input type="text" placeholder="********" readOnly className="focus:outline-none text-gray-500 rounded-lg h-10 w-full mb-1 p-2"></input>
                     <p className="text-link-blue underline cursor-pointer">Change password</p>
                 </div>
-                <div className="flex justify-center mt-28 "><LogOutButton/></div>
+                <div className="flex justify-center mt-28"><LogOutButton/></div>
                 
 
             </form>

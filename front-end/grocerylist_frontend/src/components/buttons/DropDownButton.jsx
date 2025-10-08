@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllLists } from "../../services/GroceryListService";
 import dropup from "../../assets/dropup_arrow.png";
 import dropdown from "../../assets/dropdown_arrow.png";
+import AddListNameForm from "../forms/AddListNameForm";
 
 export default function DropDownButton() {
 
@@ -10,6 +11,8 @@ const [isOpen, setIsOpen] = useState(false);
 const [selectedList, setSelectedList] = useState("Select a list");
 
 const [listOptions, setListOptions] = useState([]);
+
+const [showAddListForm, setShowAddListForm] = useState(false);
 
 const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -54,7 +57,7 @@ const handleListSelection = (list) => {
 const options = [];
 listOptions.forEach((list) => {
     options.push(
-        <div key={list.id} onClick={() => handleListSelection(list)} className="bg-light-yellow px-2 py-1 rounded-lg text-xs mx-4 my-4 cursor-pointer hover:bg-light-orange">
+        <div key={list.id} onClick={() => handleListSelection(list)} className="bg-light-yellow px-2 py-1 rounded-lg text-xs mx-4 mb-3 cursor-pointer hover:bg-light-orange">
             {list.name}
         </div>
     );
@@ -75,6 +78,13 @@ listOptions.forEach((list) => {
             </button>
             {isOpen && (
                 <div className="absolute top-full left-0 w-full bg-white opacity-95 border mt-2 rounded-lg shadow-lg z-10 max-h-44 overflow-y-auto">
+                    <div className="flex flex-row gap-2">
+                        {!showAddListForm &&
+                            <button onClick={()=> setShowAddListForm(true)} className="text-orange-highlight text-xs mt-3 mb-3 px-4">+ Add list</button>
+                        }
+                        {showAddListForm && <AddListNameForm type="nameInDropDown" />}
+            
+                    </div>
                     {options}
                 </div>
             )}
