@@ -43,6 +43,27 @@ export async function changeUserNames(firstName, lastName){
     return data;
 }
 
+export async function changeUserPassword(password) {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${BASE_URL}/password`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ password })
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to change user password');
+    }
+
+    const text = await response.text();
+    console.log(text);
+    return text;
+}
+
 export async function deleteUserAccount(){
     
     const token = localStorage.getItem('token');

@@ -82,8 +82,13 @@ listOptions.forEach((list) => {
                         {!showAddListForm &&
                             <button onClick={()=> setShowAddListForm(true)} className="text-orange-highlight text-xs mt-3 mb-3 px-4">+ Add list</button>
                         }
-                        {showAddListForm && <AddListNameForm type="nameInDropDown" />}
-            
+                        {showAddListForm && <AddListNameForm type="nameInDropDown" 
+                            onclose={async () => { setShowAddListForm(false);  
+                                const updateListOptions = await getAllLists();
+                                setListOptions(updateListOptions); 
+                            }} />
+                        }
+
                     </div>
                     {options}
                 </div>

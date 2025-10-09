@@ -2,9 +2,6 @@ import { useState } from 'react';
 import profileImg from '../../assets/profile.png';
 import { useNavigate } from 'react-router-dom';
 import ProfileForm from '../user/ProfileForm';
-import { X } from "lucide-react";
-import DeleteUserButton from '../buttons/DeleteUserButton';
-
 
 export default function PrivateHeader({ onClose }) {
 
@@ -29,9 +26,7 @@ export default function PrivateHeader({ onClose }) {
             <div className={`fixed right-0 bottom-0 h-full w-2/3 bg-background-grey overflow-y-auto text-black z-50 transform transition-transform duration-300 ${
                         profileOpen ? "translate-x-0" : "translate-x-full"
                     } shadow-lg`}>
-                        <X className="mt-6 ml-8 cursor-pointer" size={20} onClick={handleClose}/>
-                        <ProfileForm/>
-                        <div className='flex justify-center mt-12 mb-6'><DeleteUserButton/></div>
+                        <ProfileForm onClose={handleClose}/>
             </div>
 
         </div>  

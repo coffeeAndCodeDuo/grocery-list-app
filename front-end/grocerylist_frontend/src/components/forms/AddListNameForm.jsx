@@ -5,7 +5,7 @@ import checkImg from '../../assets/check-icon.png';
 import { Check, X } from "lucide-react";
 
 
-export default function AddListNameForm({type}) {
+export default function AddListNameForm({type, onclose}) {
     
     const [name, setName] = useState("");
     const navigate = useNavigate();
@@ -22,6 +22,10 @@ export default function AddListNameForm({type}) {
 
         if(type === "nameInDropDown"){
             await createNewList(name);
+
+            if (onclose) {
+                onclose();
+            }
         }    
         
     }   
@@ -46,7 +50,7 @@ export default function AddListNameForm({type}) {
     )}
 
         {type === "nameInDropDown" && (
-            <button type="button" onClick={() => setName("")} className="absolute right-5 inset-y-0 flex items-center">
+            <button type="button" onClick={onclose} className="absolute right-5 inset-y-0 flex items-center">
                 <X size={14} />
             </button>
         )}

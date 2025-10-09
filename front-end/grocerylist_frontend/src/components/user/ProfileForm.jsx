@@ -2,12 +2,16 @@ import {useState, useEffect} from "react";
 import { getUserProfile, changeUserNames } from '../../services/UserService.jsx';
 import profileImg from '../../assets/profile.png';
 import LogOutButton from "../../components/buttons/LogOutButton";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
+import ChangePasswordForm from "./ChangePasswordForm.jsx";
+import BackArrow from "../../assets/arrow2.png";
+import DeleteUserButton from '../buttons/DeleteUserButton';
 
-export default function ProfileForm(){
+export default function ProfileForm({ onClose } ){
 
     const [userInfo, setUserInfo]= useState(null);
     const [originalUserInfo, setOriginalUserInfo] = useState(null); //variavel que guarda a informação original
+    const [passwordForm, setPasswordForm] = useState(false);
 
     const fetchUserInfo = async () => {
         const data = await getUserProfile();
@@ -19,6 +23,11 @@ export default function ProfileForm(){
     useEffect(() => {
         fetchUserInfo();
     },  []);
+
+    const handleClosePasswordForm = () => {
+        setPasswordForm(false);
+        
+    }
 
     const handleChange = (e) => {
         setUserInfo({...userInfo, [e.target.name]: e.target.value})
@@ -48,8 +57,19 @@ export default function ProfileForm(){
       userInfo.lastName !== originalUserInfo.lastName
     );  
 
+    if(passwordForm){
+        
+        return (
+            <div> 
+                <img src={BackArrow} className="mt-5 ml-7 cursor-pointer w-8 h-auto" onClick={() => setPasswordForm(false)}></img>
+                <ChangePasswordForm onChange={handleClosePasswordForm} /> 
+            </div>
+        );
+    }
+
     return(
         <div>
+            <X className="mt-6 ml-8 cursor-pointer" size={20} onClick={onClose}/>
             <div className="flex justify-center">
                 
                 <img src={profileImg} className="h-32 w-auto mt-16"></img>
@@ -90,14 +110,14 @@ export default function ProfileForm(){
                 <div>
                     <label htmlFor="password"><h5 className="font-semibold mb-1.5">Password</h5></label>
                     <input type="text" placeholder="********" readOnly className="focus:outline-none text-gray-500 rounded-lg h-10 w-full mb-1 p-2"></input>
-                    <p className="text-link-blue underline cursor-pointer">Change password</p>
+                    <p className="text-link-blue underline cursor-pointer" onClick={() => setPasswordForm(true)}>Change password</p>
                 </div>
                 <div className="flex justify-center mt-28"><LogOutButton/></div>
-                
+                <div className='flex justify-center mt-12 mb-6'><DeleteUserButton/></div>
 
             </form>
+                
+
         </div>
     )
-    
-
 }
