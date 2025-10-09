@@ -39,3 +39,14 @@
     }
 
 }
+.placeholder-xs::placeholder {
+    font-size: 0.75rem;
+}
+
+.placeholder-sm::placeholder { 
+    font-size: 0.875rem;
+}
+
+.placeholder-base::placeholder { 
+    font-size: 1rem; 
+}

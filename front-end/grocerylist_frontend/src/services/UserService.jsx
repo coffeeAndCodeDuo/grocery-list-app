@@ -43,7 +43,7 @@ export async function changeUserNames(firstName, lastName){
     return data;
 }
 
-export async function changeUserPassword(password) {
+export async function changeUserPassword(currentPassword, newPassword){
     const token = localStorage.getItem('token');
 
     const response = await fetch(`${BASE_URL}/password`, {
@@ -52,7 +52,7 @@ export async function changeUserPassword(password) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ password })
+        body: JSON.stringify({currentPassword, newPassword })
     });
 
     if (!response.ok) {

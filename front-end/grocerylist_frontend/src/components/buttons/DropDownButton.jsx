@@ -88,7 +88,6 @@ listOptions.forEach((list) => {
                                 setListOptions(updateListOptions); 
                             }} />
                         }
-
                     </div>
                     {options}
                 </div>

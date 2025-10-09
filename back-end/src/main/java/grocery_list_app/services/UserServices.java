@@ -41,10 +41,14 @@ public class UserServices {
     }
 
     //falta adiconar a confirmação da nova password
-    public User changeUserPassword(String email, String newPassword){
+    public User changeUserPassword(String email, String currentPassword, String newPassword){
         User user = getUserByEmail(email);
-        user.setPassword(passwordEncoder.encode(newPassword));
 
+        if(!passwordEncoder.matches(currentPassword, user.getPassword())){
+            throw new RuntimeException("Current password is incorrect");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
         return userRepository.save(user);
     }
 

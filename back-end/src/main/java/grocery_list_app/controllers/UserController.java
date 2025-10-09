@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @CrossOrigin(origins = "http://localhost:5173", maxAge = 3600)
 @RestController
 @RequestMapping("/api/profile")
@@ -35,9 +37,12 @@ public class UserController {
     }
 
     @PutMapping({"/password"})
-    public ResponseEntity<?> updateUserPassword(@Valid @RequestBody User user, Authentication authentication) {
+    public ResponseEntity<?> updateUserPassword(@Valid @RequestBody Map<String, String> body, Authentication authentication) {
         String email = authentication.getName();
-        userServices.changeUserPassword(email, user.getPassword());
+        String currentPassword = body.get("currentPassword");
+        String newPassword = body.get("newPassword");
+
+        userServices.changeUserPassword(email, currentPassword, newPassword);
 
         return ResponseEntity.ok().body("Password updated");
     }
