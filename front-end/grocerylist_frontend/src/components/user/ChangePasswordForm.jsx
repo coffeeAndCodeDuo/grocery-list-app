@@ -5,6 +5,12 @@ import { useState } from "react";
 
 export default function ChangePasswordForm({ onChange }){
 
+    const [formData, setFormData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+    });
+
     const [showCurrentPassword, setShowCurrentPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -13,10 +19,9 @@ export default function ChangePasswordForm({ onChange }){
     const handleSubmit = async (e) => {
         e.preventDefault();
         //para conseguir os valores dos inputs
-        const formData = new FormData(e.target);
-        const currentPassword = formData.get('currentPassword');
-        const newPassword = formData.get('newPassword');
-        const confirmPassword = formData.get('confirmPassword');
+
+        const { currentPassword, newPassword, confirmPassword } = formData;
+      
 
         if(currentPassword === newPassword){
             toast.error("Choose a different password", { autoClose: 1500 });
@@ -54,37 +59,45 @@ export default function ChangePasswordForm({ onChange }){
                 {/* Current Password */}
                 <label htmlFor="currentPassword"><h5 className="font-semibold mb-1.5">Current password</h5></label>
                 <div className="relative">
-                    <input type={showCurrentPassword ? "text" : "password"} name="currentPassword" placeholder="Enter your current password" className="focus:outline-none focus:ring-black focus:ring-1 rounded-lg h-10 w-full mb-8 pl-2 pr-10 cursor-pointer placeholder-xs"/>
+                    <input type={showCurrentPassword ? "text" : "password"} name="currentPassword" value={formData.currentPassword} onChange={handleChange} placeholder="Enter your current password" className="focus:outline-none focus:ring-black focus:ring-1 rounded-lg h-10 w-full mb-8 pl-2 pr-10 cursor-pointer placeholder-xs"/>
+                   {formData.currentPassword &&(
                     <button 
                     type="button" 
                     onClick={() => setShowCurrentPassword(!showCurrentPassword)} 
                     className="absolute top-2.5 right-2 flex items-center text-gray-500">
                         {showCurrentPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
                     </button>  
+                     )}
                 </div>
 
                 {/* New Password */}
                 <label htmlFor="newPassword"><h5 className="font-semibold mb-1.5">New password</h5></label>
                 <div className="relative">
-                    <input type={showNewPassword ? "text" : "password"} name="newPassword" placeholder="Enter your new password" className="focus:outline-none focus:ring-black focus:ring-1 rounded-lg h-10 w-full mb-8 pl-2 pr-10 cursor-pointer placeholder-xs"/>
+                    <input type={showNewPassword ? "text" : "password"} name="newPassword"  value={formData.newPassword} onChange={handleChange} placeholder="Enter your new password" className="focus:outline-none focus:ring-black focus:ring-1 rounded-lg h-10 w-full mb-8 pl-2 pr-10 cursor-pointer placeholder-xs"/>
+                    
+                    {formData.newPassword &&(
                     <button 
                         type="button" 
                         onClick={() => setShowNewPassword(!showNewPassword)} 
                         className="absolute top-2.5 right-2 flex items-center text-gray-500">
                             {showNewPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
                     </button>  
+                    )}
                 </div>
 
                 {/* Confirm Password */}
                 <label htmlFor="confirmPassword"><h5 className="font-semibold mb-1.5">Confirm password</h5></label>
                 <div className="relative">
-                    <input type={showConfirmPassword ? "text" : "password"} name="confirmPassword" placeholder="Confirm your new password" className="focus:outline-none focus:ring-black focus:ring-1 rounded-lg h-10 w-full mb-6 pl-2 pr-10 cursor-pointer placeholder-xs"/>
+                    <input type={showConfirmPassword ? "text" : "password"} name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your new password" className="focus:outline-none focus:ring-black focus:ring-1 rounded-lg h-10 w-full mb-6 pl-2 pr-10 cursor-pointer placeholder-xs"/>
+                    
+                    {formData.confirmPassword &&(
                     <button 
                         type="button" 
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
                         className="absolute top-2.5 right-2 flex items-center text-gray-500">
                             {showConfirmPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
                     </button> 
+                    )}
                 </div>
 
 
