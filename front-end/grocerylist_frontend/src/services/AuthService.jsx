@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8081/grocery-list/api/auth';
+const BASE_URL = 'https://grocery-list-app-ek42.onrender.com/grocery-list/api/auth';
 
 export async function userRegister(firstName, lastName, email, password){
     const response = await fetch (`${BASE_URL}/register`, {
