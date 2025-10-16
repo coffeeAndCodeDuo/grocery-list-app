@@ -66,6 +66,8 @@ public class AuthController {
 
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
 
+        newUser.setProfileImageUrl("/profile_images/default-profile.png");
+
         userRepository.save(newUser);
 
         return ResponseEntity.ok("User registered successfully");

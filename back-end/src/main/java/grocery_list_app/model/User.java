@@ -25,8 +25,7 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    @Lob
-    private byte[] image;
+    private String profileImageUrl;
 
     @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval = true )
     @JsonManagedReference("user-groceryList")
@@ -73,20 +72,20 @@ public class User {
         this.password = password;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     public List<GroceryList> getGroceryList() {
         return groceryList;
     }
 
     public void setGroceryList(List<GroceryList> groceryList) {
         this.groceryList = groceryList;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 }
 

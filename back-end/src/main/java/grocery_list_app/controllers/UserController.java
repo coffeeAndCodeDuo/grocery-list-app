@@ -6,7 +6,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:5173", maxAge = 3600)
@@ -54,6 +56,23 @@ public class UserController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping({"/profile-image"})
+    public ResponseEntity<?> updateUserImage(Authentication authentication, MultipartFile file){
+        String email = authentication.getName();
+
+        try{
+            User updatedUser = userServices.updateUserProfileImage(email, file);
+            return ResponseEntity.ok(updatedUser.getProfileImageUrl());
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     /*
