@@ -131,11 +131,11 @@ export default function UserForm({type}){
             </div>
             </div>
 
-            <div>
+            {/*<div>
                 {type === "login" && (
                     <p className="text-xs text-center mb-48">Forget your password?</p>
                 )}
-            </div>
+            </div>*/}
             
             <div className="flex justify-center mb-4 gap-1.5">
                 <button 

@@ -1,6 +1,7 @@
 import { removeProductFromList } from "../../services/GroceryListService";
 import { toast } from "react-toastify";
 import orangeTrash from "../../assets/orangeTrash.png";
+import { Trash } from "lucide-react";
 
 
 export default function DeleteProductButton({groceryListId, productId, setListProducts}) {
@@ -19,7 +20,7 @@ export default function DeleteProductButton({groceryListId, productId, setListPr
 
     return (
         <div>
-            <img onClick={handleDeleteProduct} src={orangeTrash} className="w-8 h-8 flex items-center cursor-pointer"/>
+            <Trash strokeOpacity={0.5} size={15} onClick={handleDeleteProduct} className="text-orange-highlight flex items-center cursor-pointer"/>
         </div>
     );
 }

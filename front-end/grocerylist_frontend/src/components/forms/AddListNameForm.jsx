@@ -51,7 +51,7 @@ export default function AddListNameForm({type, onclose}) {
 
         {type === "nameInDropDown" && (
             <button type="button" onClick={onclose} className="absolute right-5 inset-y-0 flex items-center">
-                <X size={14} />
+                <X size={17} />
             </button>
         )}
     </form>
