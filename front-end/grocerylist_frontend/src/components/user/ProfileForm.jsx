@@ -6,6 +6,7 @@ import { Check, X } from "lucide-react";
 import ChangePasswordForm from "./ChangePasswordForm.jsx";
 import BackArrow from "../../assets/arrow2.png";
 import DeleteUserButton from '../buttons/DeleteUserButton';
+import UpdateProfileImgButton from "../buttons/UpdateProfileImgButton.jsx";
 
 export default function ProfileForm({ onClose } ){
 
@@ -72,7 +73,13 @@ export default function ProfileForm({ onClose } ){
             <X className="mt-6 ml-8 cursor-pointer" size={20} onClick={onClose}/>
             <div className="flex justify-center">
                 
-                <img src={profileImg} className="h-32 w-auto mt-16"></img>
+                <img src={`http://localhost:8081/grocery-list${userInfo?.profileImageUrl}`} className="h-32 w-auto mt-16"></img>
+                <UpdateProfileImgButton
+                    onUpdate={(newUrl) =>
+                    setUserInfo((prev) => ({ ...prev, profileImageUrl: newUrl }))
+                    }
+                />
+
             </div>
             <form className="ml-8 mt-14 mr-8" onSubmit={handleSubmit}>
                 <div className="relative">

@@ -66,7 +66,7 @@ public class AuthController {
 
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
 
-        newUser.setProfileImageUrl("/profile_images/default-profile.png");
+        newUser.setProfileImageUrl("/profile-images/default-profile.png");
 
         userRepository.save(newUser);
 

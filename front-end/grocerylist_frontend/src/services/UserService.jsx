@@ -84,3 +84,24 @@ export async function deleteUserAccount(){
     localStorage.removeItem("userId");
     
 }
+
+export async function updateProfileImage(formData){
+
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${BASE_URL}/profile-image`, {
+        method: 'PATCH',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData,
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to update profile image');
+    }
+
+    const data = await response.text();
+    console.log(data);
+    return data;
+}

@@ -21,12 +21,12 @@ public class UserServices {
    private final UserRepository userRepository;
    private final PasswordEncoder passwordEncoder;
 
-   private final String profileImagesDir;
+   private final String uploadDir;
 
-    public UserServices(UserRepository userRepository, PasswordEncoder passwordEncoder, @Value("${app.upload.dir:profile-images/}") String profileImagesDir) {
+    public UserServices(UserRepository userRepository, PasswordEncoder passwordEncoder, @Value("${app.upload.dir}") String uploadDir) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.profileImagesDir = profileImagesDir;
+        this.uploadDir = uploadDir;
     }
 
     public User getUserById(Integer id) {
@@ -73,21 +73,20 @@ public class UserServices {
         }
 
         // Cria diretório se não existir
-        File uploadFolder = new File(profileImagesDir);
+        File uploadFolder = new File(uploadDir).getAbsoluteFile();
         if (!uploadFolder.exists()) {
             uploadFolder.mkdirs();
         }
 
         // Gera nome único
         String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        Path filePath = Paths.get(profileImagesDir, fileName);
+        Path filePath = Paths.get(uploadFolder.getAbsolutePath(), fileName);
 
         // Guarda o ficheiro
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
         // Atualiza o caminho da imagem
-        String imageUrl = "/profile-images/" + fileName;
-        user.setProfileImageUrl(imageUrl);
+        user.setProfileImageUrl(fileName);
 
         return userRepository.save(user);
     }
