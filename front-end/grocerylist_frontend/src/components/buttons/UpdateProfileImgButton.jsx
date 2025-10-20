@@ -15,7 +15,7 @@ export default function UpdateProfileImgButton({ onUpdate }) {
       if (onUpdate) onUpdate(updatedImageUrl);
     } catch (error) {
       console.error("Error updating profile image", error);
-      toast.error("Error updating profile image");
+      toast.error("Error updating profile image", { autoClose: 1000 });
     }
   };
 

@@ -29,7 +29,7 @@ export default function PrivateHeader({ onClose }) {
         <div className="flex items-center justify-between w-80 p-4 mb-12 mx-auto"> 
             <h1 onClick={() => {navigate("/home")}} className="w-full text-center cursor-pointer font-semibold">Grocery List</h1>
             <img
-                src={`http://localhost:8081/grocery-list${profile?.profileImageUrl}`} className="w-8 h-8 rounded-full cursor-pointer"
+                src={`http://localhost:8081/grocery-list${profile?.profileImageUrl}`} className="w-8 h-8 rounded-full cursor-pointer object-cover"
                 onClick={() => setProfileOpen(true)}
             />
 
