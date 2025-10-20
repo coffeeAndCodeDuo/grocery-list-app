@@ -71,15 +71,20 @@ export default function ProfileForm({ onClose } ){
     return(
         <div>
             <X className="mt-6 ml-8 cursor-pointer" size={20} onClick={onClose}/>
-            <div className="flex justify-center">
+            <div className="flex flex-col justify-center items-center">
                 
-                <img src={`http://localhost:8081/grocery-list${userInfo?.profileImageUrl}`} className="h-32 w-auto mt-16"></img>
-                <UpdateProfileImgButton
-                    onUpdate={(newUrl) =>
-                    setUserInfo((prev) => ({ ...prev, profileImageUrl: newUrl }))
-                    }
-                />
+                <img src={ userInfo?.profileImageUrl?.startsWith("http")
+                            ? userInfo.profileImageUrl
+                            : `http://localhost:8081/grocery-list${userInfo?.profileImageUrl || ""}`
+                } className="h-32 w-32 mt-16 rounded-full"></img>
 
+                <div className="mt-6" >
+                    <UpdateProfileImgButton
+                        onUpdate={(newUrl) =>
+                        setUserInfo((prev) => ({ ...prev, profileImageUrl: newUrl }))
+                        }
+                    />
+                </div>
             </div>
             <form className="ml-8 mt-14 mr-8" onSubmit={handleSubmit}>
                 <div className="relative">

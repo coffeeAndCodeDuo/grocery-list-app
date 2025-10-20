@@ -1,6 +1,7 @@
 grocery_list_app/services/jwtservices/CustomUserDetails.class
 grocery_list_app/config/JwtAuthenticationFilter.class
 grocery_list_app/services/jwtservices/JwtUserDetailsService.class
+grocery_list_app/config/WebConfig.class
 grocery_list_app/config/SecurityConfig.class
 grocery_list_app/controllers/UserController.class
 grocery_list_app/services/jwtservices/JwtService.class

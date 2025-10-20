@@ -21,6 +21,7 @@ export default function PrivateHeader({ onClose }) {
     const handleClose = () => {
         setProfileOpen(false);
         if(onClose) onClose();
+        fetchProfile();
     }
 
     return (

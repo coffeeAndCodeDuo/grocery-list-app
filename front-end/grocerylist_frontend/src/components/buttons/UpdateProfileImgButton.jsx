@@ -23,10 +23,10 @@ export default function UpdateProfileImgButton({ onUpdate }) {
     <div>
       <button
         type="button"
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="px-4 py-2 bg-link-blue text-xs text-white rounded"
         onClick={() => document.getElementById("profileImageInput").click()}
       >
-        Alterar Foto
+        Change photo
       </button>
       <input
         id="profileImageInput"

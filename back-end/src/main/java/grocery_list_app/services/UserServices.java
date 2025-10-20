@@ -86,7 +86,8 @@ public class UserServices {
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
         // Atualiza o caminho da imagem
-        user.setProfileImageUrl(fileName);
+        String imageUrl = "/uploads/" + fileName;
+        user.setProfileImageUrl(imageUrl);
 
         return userRepository.save(user);
     }
