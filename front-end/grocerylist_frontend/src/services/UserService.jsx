@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
 
-const BASE_URL = 'http://localhost:8081/grocery-list/api/profile';
+/*const BASE_URL = 'http://localhost:8081/grocery-list/api/profile';*/
+const BASE_URL = 'https://grocery-list-production-be38.up.railway.app/grocery-list/api/profile';
+
 
 export async function getUserProfile() {
 
