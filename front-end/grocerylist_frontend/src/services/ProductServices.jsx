@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8081/grocery-list/api/products";
+const BASE_URL = "https://grocery-list-app-production-361d.up.railway.app/api/products";
 
 export async function getProductsByType(productType){
 

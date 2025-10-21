@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:8081/grocery-list/api/my-lists';
+//const BASE_URL = 'http://localhost:8081/grocery-list/api/my-lists';
+const BASE_URL = 'https://grocery-list-app-production-361d.up.railway.app/api/my-lists';
 import { toast } from "react-toastify";
 
 export async function getAllLists() {
