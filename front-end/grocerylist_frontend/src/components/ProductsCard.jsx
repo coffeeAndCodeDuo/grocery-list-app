@@ -29,7 +29,7 @@ export default function ProductsCard({type}) {
         productList.push( 
             <div key={product.id} className="flex flex-col items-center">
                 <div className="relative bg-white  w-full h-14 p-1 rounded-lg flex items-center justify-center">
-                   <img src={`http://localhost:8081/grocery-list${product.imageUrl}`} className="max-h-full max-w-full object-contain"/> 
+                   <img src={`https://grocery-list-app-production-361d.up.railway.app${product.imageUrl}`} className="max-h-full max-w-full object-contain"/> 
                    <AddProductButton type={"product"} productId={product.id}/>
                 </div>
                 
