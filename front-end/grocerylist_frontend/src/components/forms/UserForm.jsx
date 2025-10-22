@@ -137,7 +137,7 @@ export default function UserForm({type}){
                 )}
             </div>*/}
             
-            <div className="flex justify-center mb-4 gap-1.5">
+            <div className="flex justify-center mt-48 mb-4 gap-1.5">
                 <button 
                     className={
                         type === "login" 
