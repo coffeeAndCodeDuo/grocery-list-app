@@ -69,7 +69,7 @@ public class SecurityConfig {
                 "http://localhost:5174",
                 "https://grocery-list-production-be38.up.railway.app"
         ));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH"));
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
 
