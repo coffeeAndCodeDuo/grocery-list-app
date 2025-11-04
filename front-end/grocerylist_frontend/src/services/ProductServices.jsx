@@ -1,4 +1,9 @@
-const BASE_URL = "https://grocery-list-app-production-361d.up.railway.app/api/products";
+
+const isLocalhost = window.location.hostname === 'localhost';
+const BASE_URL = isLocalhost 
+  ? 'http://localhost:8081/grocery-list/api/products' 
+  : 'https://grocery-list-app-production-361d.up.railway.app/api/products';
+
 
 export async function getProductsByType(productType){
 

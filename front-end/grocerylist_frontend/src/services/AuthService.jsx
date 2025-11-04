@@ -1,5 +1,9 @@
-/*const BASE_URL = 'http://localhost:8081/grocery-list/api/auth';*/
-const BASE_URL = 'https://grocery-list-app-production-361d.up.railway.app/api/auth';
+
+const isLocalhost = window.location.hostname === 'localhost';
+const BASE_URL = isLocalhost 
+  ? 'http://localhost:8081/grocery-list/api/auth' 
+  : 'https://grocery-list-app-production-361d.up.railway.app/api/auth';
+
 
 
 export async function userRegister(firstName, lastName, email, password){

@@ -68,6 +68,11 @@ export default function ProfileForm({ onClose } ){
         );
     }
 
+    const isLocal = window.location.hostname === "localhost";
+    const BASE_URL = isLocal
+        ? "http://localhost:8081/grocery-list"
+        : "https://grocery-list-app-production-361d.up.railway.app";
+
     return(
         <div>
             <X className="mt-6 ml-8 cursor-pointer" size={20} onClick={onClose}/>
@@ -75,7 +80,7 @@ export default function ProfileForm({ onClose } ){
                 
                 <img src={ userInfo?.profileImageUrl?.startsWith("http")
                             ? userInfo.profileImageUrl
-                            : `https://grocery-list-app-production-361d.up.railway.app${userInfo?.profileImageUrl || ""}`
+                            : `${BASE_URL}${userInfo?.profileImageUrl || ""}`
                 } className="h-32 w-32 mt-16 rounded-full object-cover"></img>
 
                 <div className="mt-6" >

@@ -24,12 +24,17 @@ export default function ProductsCard({type}) {
         fetchProducts();
     }, [type]); // depende da URL / type
 
+    const isLocal = window.location.hostname === "localhost";
+    const BASE_URL = isLocal
+        ? "http://localhost:8081/grocery-list"
+        : "https://grocery-list-app-production-361d.up.railway.app";
+
     const productList = [];
     products.forEach((product) => {
         productList.push( 
             <div key={product.id} className="flex flex-col items-center">
                 <div className="relative bg-white  w-full h-14 p-1 rounded-lg flex items-center justify-center">
-                   <img src={`https://grocery-list-app-production-361d.up.railway.app${product.imageUrl}`} className="max-h-full max-w-full object-contain"/> 
+                   <img src={`${BASE_URL}${product.imageUrl}`} className="max-h-full max-w-full object-contain"/> 
                    <AddProductButton type={"product"} productId={product.id}/>
                 </div>
                 

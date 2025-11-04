@@ -24,12 +24,18 @@ export default function PrivateHeader({ onClose }) {
         fetchProfile();
     }
 
+    const isLocal = window.location.hostname === "localhost";
+    const BASE_URL = isLocal
+    ? "http://localhost:8081/grocery-list"
+    : "https://grocery-list-app-production-361d.up.railway.app";
+
+
     return (
     <div>
         <div className="flex items-center justify-between w-80 p-4 mb-12 mx-auto"> 
             <h1 onClick={() => {navigate("/home")}} className="w-full text-center cursor-pointer font-semibold">Grocery List</h1>
             <img
-                src={`https://grocery-list-app-production-361d.up.railway.app${profile?.profileImageUrl}`} 
+                src={`${BASE_URL}${profile?.profileImageUrl}`} 
                 className="w-8 h-8 rounded-full cursor-pointer object-cover"
                 onClick={() => setProfileOpen(true)}
             />
