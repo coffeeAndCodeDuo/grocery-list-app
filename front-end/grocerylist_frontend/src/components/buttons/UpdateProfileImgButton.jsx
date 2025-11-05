@@ -13,6 +13,7 @@ export default function UpdateProfileImgButton({ onUpdate }) {
     try {
       const updatedImageUrl = await updateProfileImage(formData);
       if (onUpdate) onUpdate(updatedImageUrl);
+
     } catch (error) {
       console.error("Error updating profile image", error);
       toast.error("Error updating profile image", { autoClose: 1000 });
@@ -28,6 +29,7 @@ export default function UpdateProfileImgButton({ onUpdate }) {
       >
         Change photo
       </button>
+
       <input
         id="profileImageInput"
         type="file"

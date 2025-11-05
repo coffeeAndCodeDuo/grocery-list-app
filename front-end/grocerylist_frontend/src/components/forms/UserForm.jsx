@@ -11,6 +11,7 @@ export default function UserForm({type}){
     const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
+
     //Guardar valores do formulario 
     const [formData, setFormData] = useState({
         firstName:"",
@@ -18,6 +19,7 @@ export default function UserForm({type}){
         email:"",
         password:""
     });
+
     //permite "atualizar" os valores que tenho sido escritos
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -76,7 +78,7 @@ export default function UserForm({type}){
         }
     };
 
-    //estrutura e logica do formulário
+    //estrutura e lógica do formulário
     return (
         <form onSubmit={handleSubmit}>
             {type === "register" && (
@@ -130,12 +132,6 @@ export default function UserForm({type}){
                 }
             </div>
             </div>
-
-            {/*<div>
-                {type === "login" && (
-                    <p className="text-xs text-center mb-48">Forget your password?</p>
-                )}
-            </div>*/}
             
             <div className="flex justify-center mt-48 mb-4 gap-1.5">
                 <button 

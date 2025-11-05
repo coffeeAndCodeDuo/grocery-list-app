@@ -27,11 +27,13 @@ public class ProductServices {
 
     public List<Product> getProductsByType(ProductType type, String email) {
         userServices.getUserByEmail(email);
+
         return productRepository.findByType(type);
     }
 
     public List<Map<String, String>> getProductTypes (String email){
         userServices.getUserByEmail(email);
+
         return Arrays.stream(ProductType.values())
                 .map(pt -> Map.of(
                         "id", pt.getId(),

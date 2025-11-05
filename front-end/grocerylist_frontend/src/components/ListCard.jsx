@@ -11,6 +11,7 @@ export default function ListCard({type}) {
     const navigate = useNavigate();
 
     const [lists, setLists] = useState([]);
+    
     useEffect(() => { 
         const fetchLists = async () => {
             const data = await getAllLists();

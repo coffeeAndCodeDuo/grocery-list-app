@@ -10,12 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
+
 //para evitar loops no json
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id"
 )
-
 public class Product {
 
     @Id
@@ -57,11 +57,6 @@ public class Product {
         this.type = type;
     }
 
-    @Override
-    public String toString(){
-        return name;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -69,4 +64,10 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
+
 }

@@ -5,7 +5,6 @@ const BASE_URL = isLocalhost
   ? 'http://localhost:8081/grocery-list/api/profile' 
   : 'https://grocery-list-app-production-361d.up.railway.app/api/profile';
 
-
 export async function getUserProfile() {
 
     const token = localStorage.getItem('token');
@@ -16,13 +15,14 @@ export async function getUserProfile() {
             'Authorization': `Bearer ${token}`
         }
     });
+
     if (!response.ok) {
         throw new Error('Failed to fetch user profile');
     }
-    const data = await response.json();
-    console.log(data); //nao se pode por response.json() duas vezes porque a response só é lida uma vez
-    return data;
 
+    const data = await response.json();
+
+    return data;
 }
 
 export async function changeUserNames(firstName, lastName){
@@ -43,7 +43,7 @@ export async function changeUserNames(firstName, lastName){
     }
 
     const data = await response.json();
-    console.log(data);
+
     return data;
 }
 
@@ -64,7 +64,7 @@ export async function changeUserPassword(currentPassword, newPassword){
     }
 
     const text = await response.text();
-    console.log(text);
+  
     return text;
 }
 
@@ -85,8 +85,7 @@ export async function deleteUserAccount(){
     }
 
     localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    
+    localStorage.removeItem("userId");  
 }
 
 export async function updateProfileImage(formData){
@@ -106,6 +105,6 @@ export async function updateProfileImage(formData){
     }
 
     const data = await response.text();
-    console.log(data);
+   
     return data;
 }

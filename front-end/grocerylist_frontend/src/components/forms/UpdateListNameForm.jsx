@@ -9,7 +9,7 @@ export default function UpdateListNameForm({listId, name, onSuccess}) {
     //para começar com o nome atual da lista
     const [newName, setNewName] = useState("");
 
-  // Atualiza newName sempre que name mudar
+    //Atualiza newName sempre que name mudar
     useEffect(() => {
         setNewName(name);
     }, [name]);
@@ -28,7 +28,6 @@ export default function UpdateListNameForm({listId, name, onSuccess}) {
         }catch (error) {
             toast.error("Failed to update list name");
         }
-
     }
 
     return (
@@ -40,5 +39,4 @@ export default function UpdateListNameForm({listId, name, onSuccess}) {
             </form>
         </div>
     );
-
 }

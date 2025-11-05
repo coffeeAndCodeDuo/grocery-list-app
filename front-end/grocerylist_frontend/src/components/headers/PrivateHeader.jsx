@@ -26,8 +26,8 @@ export default function PrivateHeader({ onClose }) {
 
     const isLocal = window.location.hostname === "localhost";
     const BASE_URL = isLocal
-    ? "http://localhost:8081/grocery-list"
-    : "https://grocery-list-app-production-361d.up.railway.app";
+        ? "http://localhost:8081/grocery-list"
+        : "https://grocery-list-app-production-361d.up.railway.app";
 
 
     return (

@@ -1,6 +1,5 @@
 package grocery_list_app.config;
 
-import grocery_list_app.services.jwtservices.JwtUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,44 +22,41 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final JwtUserDetailsService userDetailsService;
 
-
-    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, JwtUserDetailsService userDetailsService) {
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-        this.userDetailsService = userDetailsService;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> {})//desativar Cross Site Request Forgery, que vem ativado por definição no spring security
+                .cors(cors -> {}) //desativar Cross Site Request Forgery, que vem ativado por definição no spring security
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/auth/register").permitAll()
-                        .requestMatchers("/images/**").permitAll() //pode causar problemas de privacidade com fotos de perfil
+                        .requestMatchers("/images/**").permitAll()
                         .requestMatchers("/profile-images/**").permitAll()
                         .requestMatchers("/uploads/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //mudar para if_required ou apagar esta linha se quisermos manter login
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); //para nao estar sempre a pedir login entre paginas
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //mudar para IF_REQUIRED ou apagar esta linha se quisermos manter login
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); //para não estar sempre a pedir login entre páginas
         return http.build();
     }
 
-    //"compara" o user e pass que vem do frontend com a info que esta na base de dados
+    //"compara" o user e password que vem do frontend com a info que esta na base de dados
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    //usa algoritmo bcrypt para encriptar pass
+    //usa algoritmo bcrypt para encriptar password
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-    //Para o cross origin funcionar, porque com o authentication no header tenho de configurar o cors
+    //Para o cross origin funcionar, porque com o authentication no header temos de configurar o cors
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

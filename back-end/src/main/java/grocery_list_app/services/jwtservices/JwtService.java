@@ -45,7 +45,7 @@ public class JwtService {
         return null;
     }
 
-    // Valida token contra os dados do utilizador
+    //Valida token com os dados do utilizador
     public boolean isTokenValid(String token, UserDetails userDetails){
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token) && username != null);
@@ -59,7 +59,7 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    // Gera token para o utilizador
+    //Gera token para o utilizador
     public String generateToken(UserDetails userDetails){
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, userDetails.getUsername());

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CheckIcon } from "../CheckIcon";
 
 export default function CheckBox({productId, listId}) {
+    
     const [isChecked, setIsChecked] = useState(() => {
         const saved = localStorage.getItem(`checkbox-checked-${listId}-${productId}`);
         return saved === "true";

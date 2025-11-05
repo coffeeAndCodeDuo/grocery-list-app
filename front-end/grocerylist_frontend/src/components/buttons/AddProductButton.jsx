@@ -19,6 +19,7 @@ export default function AddProductButton({type, productId}) {
                 await addProductToList(selectedListId, productId);
                 toast.success("Product added to list", {autoClose: 1000});
             }
+            
             if(type === "list"){
                 await addProductToList(listId, productId);
                 toast.success("Product added to list", {autoClose: 1000});

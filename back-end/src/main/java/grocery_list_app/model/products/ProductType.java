@@ -1,7 +1,6 @@
 package grocery_list_app.model.products;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ProductType {
     FRUITS("Fruits\n" + "\uD83C\uDF49" + " \uD83C\uDF4E"),
@@ -32,6 +31,5 @@ public enum ProductType {
     public String getDisplayName() {
         return displayName;
     }
-
 
 }

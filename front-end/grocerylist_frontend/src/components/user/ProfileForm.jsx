@@ -27,7 +27,6 @@ export default function ProfileForm({ onClose } ){
 
     const handleClosePasswordForm = () => {
         setPasswordForm(false);
-        
     }
 
     const handleChange = (e) => {
@@ -36,6 +35,7 @@ export default function ProfileForm({ onClose } ){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try{
             await changeUserNames(userInfo.firstName, userInfo.lastName);
             const updated = await getUserProfile(); 
@@ -49,7 +49,7 @@ export default function ProfileForm({ onClose } ){
     }
 
 
-    //verifica se o nome que esta no campo de input é igual ao nome que esta guardado na base de dados 
+    //verifica se o nome que está no campo de input é igual ao nome que está guardado na base de dados 
     const verifyChangesFirstName = userInfo && originalUserInfo &&(
         userInfo.firstName !== originalUserInfo.firstName
     );
@@ -81,7 +81,8 @@ export default function ProfileForm({ onClose } ){
                 <img src={ userInfo?.profileImageUrl?.startsWith("http")
                             ? userInfo.profileImageUrl
                             : `${BASE_URL}${userInfo?.profileImageUrl || ""}`
-                } className="h-32 w-32 mt-16 rounded-full object-cover"></img>
+                } className="h-32 w-32 mt-16 rounded-full object-cover">
+                </img>
 
                 <div className="mt-6" >
                     <UpdateProfileImgButton
@@ -91,6 +92,7 @@ export default function ProfileForm({ onClose } ){
                     />
                 </div>
             </div>
+
             <form className="ml-8 mt-14 mr-8" onSubmit={handleSubmit}>
                 <div className="relative">
                     <label htmlFor="firstName"><h5 className="font-semibold mb-1.5">First Name</h5></label>
@@ -133,8 +135,6 @@ export default function ProfileForm({ onClose } ){
                 <div className='flex justify-center mt-12 mb-6'><DeleteUserButton/></div>
 
             </form>
-                
-
         </div>
     )
 }

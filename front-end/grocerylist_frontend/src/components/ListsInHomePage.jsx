@@ -7,11 +7,11 @@ export default function ListsInHomePage() {
             <div className="bg-light-orange rounded-t-lg h-10 mx-6 mt-12 flex items-center justify-between p-4 shadow-sm">
                 <h5>My Lists</h5>
                 <AddListButton />
-            </div>    
+            </div>   
+
             <div className="bg-light-yellow rounded-b-lg h-48 mx-6 pt-2 shadow-sm">
                 <ListCard type="home"/>
-            </div>
-           
+            </div> 
         </div>
     )
 }

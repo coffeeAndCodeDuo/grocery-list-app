@@ -5,6 +5,7 @@ import AddListButton from "../components/buttons/AddListButton";
 import BackButton from "../components/buttons/BackButton";
 
 export default function AllLists() {
+  
   return (
     <div>
       <BackButton type="backOne" />

@@ -73,9 +73,4 @@ public class UserController {
         }
     }
 
-
-
-    /*
-    /grocery-list/profile/ -> PUT (Falta alterar foto - para mais tarde)
-     */
 }

@@ -7,6 +7,7 @@ export default function ProductTypeCard() {
     const navigate = useNavigate();
 
     const [productType, setProductType] = useState([]);
+    
     useEffect(() => { 
         const fetchProducts = async () => {
             const typeList = await getProductTypes();
@@ -28,8 +29,6 @@ export default function ProductTypeCard() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-6 mb-12 px-6">
                 {productTypes}
             </div>
-
-
         </div>
     )
 }    

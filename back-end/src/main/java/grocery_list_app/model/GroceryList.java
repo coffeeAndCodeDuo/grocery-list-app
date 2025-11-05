@@ -12,7 +12,6 @@ import java.util.*;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id"
 )
-
 public class GroceryList {
 
     @Id

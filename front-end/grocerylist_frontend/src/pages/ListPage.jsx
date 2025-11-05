@@ -18,7 +18,7 @@ export default function ListPage() {
   const location = useLocation();
   const fromCreate = location.state?.fromCreate || false; //fromCreate é uma flag que indica que o user veio da pagina de criação da lista, que permite definir se quando se faz back se anda 1 ou 2 páginas
   
-    async function fetchList() {
+  async function fetchList() {
       if (listId) {
         const data = await getListById(listId);
         setListName(data.name);
@@ -34,14 +34,14 @@ export default function ListPage() {
               </div>
               <DeleteProductButton productId={product.id} groceryListId={listId} setListProducts={setListProducts}/>
               </div>);
-              
-          });
+            });
+
           setListProducts(products);
         
         };
       }
 
-    }
+  }
   
   useEffect(() => {
     fetchList();
@@ -61,8 +61,8 @@ export default function ListPage() {
       <BackButton type={fromCreate ? "backTwo" : "backOne"} />
       <PrivateHeader />
       <MainCard 
-      topContent={<div className="w-76 flex flex-row items-center justify-between pr-4">{listNameForm()}</div>}
-      bottomContent={<div className="mt-8 mx-6 overflow-y-auto">
+        topContent={<div className="w-76 flex flex-row items-center justify-between pr-4">{listNameForm()}</div>}
+        bottomContent={<div className="mt-8 mx-6 overflow-y-auto">
 
         {location.pathname == "/my-list/new"
         ? null
@@ -75,9 +75,10 @@ export default function ListPage() {
         ) : (
           <div><AddProductFromList onClose={fetchList}/></div>
         )}
-      </div>
-    }
-      bgColor="bg-light-yellow"
+          </div>
+        }
+        
+        bgColor="bg-light-yellow"
       />
     </div>
 

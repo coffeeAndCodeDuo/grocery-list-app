@@ -15,6 +15,7 @@ export default function ProductsCardInList({type}) {
                     const productsByType = await getProductsByType(type);
                     setProducts(productsByType);
                 }
+
             } catch (error) {
                 console.error("Erro ao buscar produtos:", error);
             }

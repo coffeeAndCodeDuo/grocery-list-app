@@ -47,7 +47,6 @@ public class UserServices {
         return userRepository.save(user);
     }
 
-    //falta adiconar a confirmação da nova password
     public User changeUserPassword(String email, String currentPassword, String newPassword){
         User user = getUserByEmail(email);
 

@@ -1,4 +1,3 @@
-
 const isLocalhost = window.location.hostname === 'localhost';
 const BASE_URL = isLocalhost 
   ? 'http://localhost:8081/grocery-list/api/products' 
@@ -22,7 +21,7 @@ export async function getProductsByType(productType){
     }
 
     const data = await response.json();
-    console.log(data);
+  
     return data;
 }
 
@@ -43,9 +42,8 @@ export async function getProductTypes(){
     }  
 
     const data = await response.json();
-    console.log(data);
+   
     return data;
-
 }
 
 export async function getAllProducts(){
@@ -65,6 +63,6 @@ export async function getAllProducts(){
     }
 
     const data = await response.json();
-    console.log(data);
+   
     return data;
 }

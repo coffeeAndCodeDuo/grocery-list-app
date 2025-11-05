@@ -17,6 +17,7 @@ export default function ListName({ listId, name}) {
           <div className="flex-1">
             <UpdateListNameForm listId={listId} name={currentName} onSuccess={(updatedName) => { setCurrentName(updatedName); setEditName(false); }} />
           </div>
+          
           <div className="flex items-center mr-4 ml-2">
             <button onClick={() => setEditName(false)}><X size={20} /></button>
           </div>

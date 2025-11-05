@@ -3,8 +3,6 @@ package grocery_list_app.controllers;
 import grocery_list_app.exceptions.ProductAlreadyInListException;
 import grocery_list_app.model.GroceryList;
 import grocery_list_app.services.GroceryListServices;
-import grocery_list_app.services.ProductServices;
-import grocery_list_app.services.UserServices;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +60,7 @@ public class GroceryListController {
     @PostMapping("/{groceryListId}/{productId}")
     public ResponseEntity<?> addProducts(@PathVariable Integer groceryListId, @PathVariable Integer productId, Authentication authentication){
         String email = authentication.getName();
+
         try{
             GroceryList groceryList = groceryListServices.addProductToGroceryList(groceryListId, email, productId);
             return ResponseEntity.ok(groceryList);

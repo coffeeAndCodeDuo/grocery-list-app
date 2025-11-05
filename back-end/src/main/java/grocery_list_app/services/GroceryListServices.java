@@ -10,7 +10,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class GroceryListServices {
@@ -42,7 +41,6 @@ public class GroceryListServices {
     public GroceryList getGroceryListById(Integer id) {
         return groceryListRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + id));
-
     }
 
     public GroceryList addProductToGroceryList(Integer groceryListId, String email, Integer productId) {
@@ -81,6 +79,7 @@ public class GroceryListServices {
     public List<Product> listGroceryListProducts(Integer groceryListId){
         GroceryList groceryList = groceryListRepository.findById(groceryListId)
                 .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId));
+
         return groceryList.getProducts();
     }
 
@@ -90,11 +89,13 @@ public class GroceryListServices {
 
     public List<GroceryList> listAllGroceryListsByUser(String email){
         User user = userServices.getUserByEmail(email);
+
         return groceryListRepository.findAllByUserId(user.getId());
     }
 
     public GroceryList getGroceryListByUser(String email, Integer groceryListId){
         User user = userServices.getUserByEmail(email);
+
         return groceryListRepository.findByIdAndUserId(groceryListId, user.getId())
                 .orElseThrow(() -> new EntityNotFoundException("GroceryList not found with id: " + groceryListId + "and User not found with id: " + user.getId()));
     }
@@ -102,13 +103,12 @@ public class GroceryListServices {
     public void deleteGroceryList(Integer groceryListId, String email) {
         GroceryList groceryList = getGroceryListByUser(email, groceryListId);
         groceryListRepository.delete(groceryList);
-
     }
 
     public GroceryList changeGroceryListName(Integer groceryListId, String newName, String email) {
         GroceryList groceryList = getGroceryListByUser(email, groceryListId);
         groceryList.setName(newName);
-        return groceryListRepository.save(groceryList);
 
+        return groceryListRepository.save(groceryList);
     }
 }

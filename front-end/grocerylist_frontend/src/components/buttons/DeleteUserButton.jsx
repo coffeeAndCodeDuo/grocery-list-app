@@ -12,6 +12,7 @@ export default function DeleteUserButton() {
             await deleteUserAccount();
             toast.success("Account deleted successfully");
             navigate("/");
+            
         } catch (error) {
             console.error("Error deleting account:", error);
         }

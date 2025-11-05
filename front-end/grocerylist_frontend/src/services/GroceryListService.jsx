@@ -22,7 +22,7 @@ export async function getAllLists() {
     }
 
     const data = await response.json();
-    console.log(data);
+
     return data;
 }
 
@@ -44,7 +44,7 @@ export async function createNewList(name) {
     }
 
     const data = await response.json();
-    console.log(data);
+    
     return data;
 }
 
@@ -64,7 +64,7 @@ export async function getListById(listId) {
     }
 
     const data = await response.json();
-    console.log(data);
+    
     return data;
 }
 
@@ -82,7 +82,6 @@ export async function deleteListById(groceryListId) {
     if (!response.ok) {
         throw new Error("Failed to delete list by ID");
     }
-
 
     toast.success("List deleted successfully!", { autoClose: 1500})            
 }
@@ -105,7 +104,7 @@ export async function updateListName(groceryListId, name) {
     }
 
     const data = await response.json();
-    console.log(data);
+  
     return data;
 }
 
@@ -126,7 +125,7 @@ export async function addProductToList(groceryListId, productId) {
     }
 
     const data = await response.json();
-    console.log(data);
+   
     return data;
 }
 
@@ -146,6 +145,6 @@ export async function removeProductFromList(groceryListId, productId) {
     }
 
     const data = await response.json();
-    console.log(data);
+   
     return data;     
 }

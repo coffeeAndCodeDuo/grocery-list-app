@@ -16,6 +16,7 @@ export default function ProductsCard({type}) {
                     const productsByType = await getProductsByType(type);
                     setProducts(productsByType);
                 }
+                
             } catch (error) {
                 console.error("Error fetching products:", error);
             }

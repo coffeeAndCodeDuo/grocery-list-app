@@ -6,17 +6,18 @@ export default function ProductTypeCardInList({onSelectType}) {
     const [productType, setProductType] = useState([]);
 
     useEffect(() => { 
+
         const fetchProducts = async () => {
             const typeList = await getProductTypes();
             setProductType(typeList);
         };
+        
         fetchProducts();
     }, []);
 
     const productTypes = [];
     productType.forEach((typeList) => {
         productTypes.push( <div key={typeList.id} className="bg-white p-4 w-full h-28 rounded-lg flex items-center justify-center cursor-pointer" onClick={() => {onSelectType(typeList.id)}}><h5 className="whitespace-pre-line text-center">{typeList.displayName}</h5>
-
         </div>);
     });
 

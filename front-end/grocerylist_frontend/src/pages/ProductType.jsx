@@ -28,13 +28,13 @@ export default function ProductType() {
 
     return (
         <div>   
-        <BackButton type="backOne" />
-        <PrivateHeader />
-        <MainCard 
-            topContent={<h4>{displayType}</h4>}
-            bottomContent={<div><ProductsCard type={productType}/></div>}
-            bgColor="bg-light-blue"
-        />
+            <BackButton type="backOne" />
+            <PrivateHeader />
+            <MainCard 
+                topContent={<h4>{displayType}</h4>}
+                bottomContent={<div><ProductsCard type={productType}/></div>}
+                bgColor="bg-light-blue"
+            />
         </div>
     );
 }

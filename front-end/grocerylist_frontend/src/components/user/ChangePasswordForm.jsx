@@ -6,9 +6,9 @@ import { useState } from "react";
 export default function ChangePasswordForm({ onChange }){
 
     const [formData, setFormData] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
     });
 
     const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -18,11 +18,10 @@ export default function ChangePasswordForm({ onChange }){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         //para conseguir os valores dos inputs
-
         const { currentPassword, newPassword, confirmPassword } = formData;
       
-
         if(currentPassword === newPassword){
             toast.error("Choose a different password", { autoClose: 1500 });
             return;
