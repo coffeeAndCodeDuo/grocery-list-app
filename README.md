@@ -34,16 +34,23 @@ This project represents not only our technical growth but also our commitment to
 ## Application Desing
 
 * ### Design Mockup
-
+<br>
 <p align="center">
   <img width="22%" alt="Login Page Mockup" src="https://github.com/user-attachments/assets/f4e72385-8835-4b30-9c2c-e29f589b2b50">
   <img width="22%" alt="Homepage Mockup" src="https://github.com/user-attachments/assets/e454e7a5-3d83-4ce7-8214-f458c14a2cc1">
   <img width="22%" alt="List Page Mockup" src="https://github.com/user-attachments/assets/57309c16-66c0-4ea7-b4c3-26d7b65d5541">
   <img width="22%" alt="Products Page Mockup" src="https://github.com/user-attachments/assets/c2175841-c83b-46c4-bec6-c015b6e51e59">
 </p>
+<br>
 
 * ### Real App Screenshot
-
+<br>
+<p align="center">
+  <img width="22%" alt="login page" src="https://github.com/user-attachments/assets/2a501de7-a833-4de1-8dba-38c08b7ca550" >
+  <img width="22%" alt="homepage" src="https://github.com/user-attachments/assets/e4fd8509-8316-40ef-907d-864533adf1d6">
+  <img width="22%" alt="list page" src="https://github.com/user-attachments/assets/70fa6568-a4f2-4e94-a791-8634b0b935ed">
+  <img width="22%" alt="products page" src="https://github.com/user-attachments/assets/6dcddfdd-7db6-44e0-9f41-991576e7434f">
+</p>
 
 
 
